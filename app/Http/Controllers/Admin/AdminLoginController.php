@@ -43,7 +43,7 @@ class AdminLoginController extends Controller
 
     public function logout()
     {
-        Auth::guard('admin')->logout();  
+        Auth::guard('admin')->logout();
         return redirect()->route('admin_login');
     }
 
@@ -56,16 +56,52 @@ class AdminLoginController extends Controller
         $admin_data = Admin::where('email' , $request->email)->first();
 
         if(!$admin_data){
-            return rdeirect()->back()->with('error' , 'Email Addrees not found');
+            return redirect()->back()->with('error' , 'Email Addrees not found');
         }
 
 
         $token = hash('sha256' , time());
+
+        $admin_data->token =$token;
+        $admin_data->update();
+
+
         $reset_link = url('/admin/reset-password/'.$token.'/'.$request->email);
         $subject = "Reset Password";
         $message = 'Please click on the following link : <br>';
         $message =  '<a href="'.$reset_link.'">Click here</a>';
 
-        
+        \Mail::to($request->email)->send(new Websitemail($subject , $message));
+
+        return redirect()->route('admin_login')->with('success' , 'Please check your email and follow the steps there');
+
+
+    }
+
+
+    public function reset_password($token , $email){
+        $admin_data = Admin::where('token' , $token)->where('email' , $email)->first();
+        if(!$admin_data){
+            return redirect()->route('admin_login');
+        }
+
+        return view('admin.reset_password' , compact('token' , 'email'));
+
+    }
+
+    public function reset_password_submit(Request $request , $token , $email){
+        $request->validate([
+            'password' => 'required',
+            'retype_password'=>'required |same:password'
+        ]);
+
+        $hashedPassword = Hash::make($request->input('password'));
+        $admin_data = Admin::where('token' , $token)->where('email' , $email)->first();
+        $admin_data->update([
+            'password'=>$hashedPassword
+        ]);
+
+        return redirect()->route('admin_login')->with('success' , 'Password is reset successfully');
+
     }
 }

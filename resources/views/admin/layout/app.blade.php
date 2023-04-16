@@ -12,16 +12,16 @@
     @include('admin.layout.styles')
 
     @include('admin.layout.scripts')
-    
+
 </head>
 
 <body>
 <div id="app">
     <div class="main-wrapper">
-        
+
         @include('admin.layout.nav')
 
-        @include('admin.layout.sidebar')        
+        @include('admin.layout.sidebar')
 
         <div class="main-content">
             <section class="section">
@@ -34,7 +34,6 @@
 
                 @yield('main_content')
 
-
             </section>
         </div>
 
@@ -43,5 +42,38 @@
 
 @include('admin.layout.scripts_footer')
 
+
+@if ($errors->any())
+@foreach ($errors->all() as $error)
+<script>
+    iziToast.error({
+    title: '',
+    position: 'topRight',
+    message: '{{ $error }}',
+});
+</script>
+@endforeach
+
+@endif
+
+@if (session()->get('error'))
+<script>
+    iziToast.error({
+    title: '',
+    position: 'topRight',
+    message: '{{ session()->get('error') }}',
+});
+</script>
+@endif
+
+@if (session()->get('succes'))
+<script>
+    iziToast.success({
+    title: '',
+    position: 'topRight',
+    message: '{{ session()->get('succes') }}',
+});
+</script>
+@endif
 </body>
 </html>
