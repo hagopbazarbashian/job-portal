@@ -412,3 +412,17 @@ hr.invoice-above-table {
 .was-validated .form-control:invalid {
     border-color: #dc3545!important;
 }
+
+
+.btn-block{
+    width: 100% !important;
+}
+
+.w-100-p{
+    width: 100%;
+}
+
+.navbar-expand-lg .navbar-nav .dropdown-menu{
+    left: -130px !important;
+    top: 51px;
+}
