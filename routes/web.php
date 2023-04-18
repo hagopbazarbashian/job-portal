@@ -1,15 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\TermsController;
 use App\Http\Controllers\Admin\AdminHomeController;
-use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\AdminLoginController; 
 use App\Http\Controllers\Admin\AdminProfileController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
+
+Route::get('/',[HomeController::class , 'index'])->name('home');
+Route::get('terms',[TermsController::class , 'index'])->name('terms');
 
 // PayPal Payment
 Route::post('paypal/payment' , [PayPallController::class , 'payment'])->name('payment');
