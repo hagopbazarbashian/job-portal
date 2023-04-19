@@ -1,4 +1,4 @@
- @extends('front.layout.app')
+@extends('front.layout.app')
 @section('main_content')
 <div class="slider" style="background-image: url(uploads/banner5.jpg)">
     <div class="bg"></div>
@@ -722,4 +722,3 @@
 </div>
 
 @endsection
- 

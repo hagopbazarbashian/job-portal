@@ -2,7 +2,7 @@
     <!-- Menu For Mobile Device -->
     <div class="mobile-nav">
         <a href="index.html" class="logo">
-            <img src="uploads/logo.png" alt="" />
+            <img src="{{ asset('uploads/logo.png') }}" alt="" />
         </a>
     </div>
 
@@ -10,8 +10,8 @@
     <div class="main-nav">
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-light">
-                <a class="navbar-brand" href="index.html">
-                    <img src="uploads/logo.png" alt="" />
+                <a class="navbar-brand" href="{{ route('home') }}">
+                    <img src="{{ asset('uploads/logo.png') }}" alt="" />
                 </a>
                 <div
                     class="collapse navbar-collapse mean-menu"
@@ -19,37 +19,37 @@
                 >
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a href="index.html" class="nav-link"
-                                >Home</a
-                            >
+                            <a href="{{ route('home') }}" class="nav-link">
+                                Home
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a href="jobs.html" class="nav-link">
-                                Find Jobs</a
-                            >
+                                Find Jobs
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a href="companies.html" class="nav-link"
-                                >Companies</a
-                            >
+                            <a href="companies.html" class="nav-link">
+                                Companies
+                            </a>  
                         </li>
                         <li class="nav-item">
-                            <a href="pricing.html" class="nav-link"
-                                >Pricing</a
-                            >
+                            <a href="pricing.html" class="nav-link">
+                                Pricing
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a href="faq.html" class="nav-link">FAQ</a>
                         </li>
                         <li class="nav-item">
-                            <a href="blog.html" class="nav-link"
-                                >Blog</a
-                            >
+                            <a href="blog.html" class="nav-link">
+                                Blog
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a href="contact.html" class="nav-link"
-                                >Contact</a
-                            >
+                            <a href="contact.html" class="nav-link">
+                                Contact
+                            </a>
                         </li>
                     </ul>
                 </div>
