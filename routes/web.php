@@ -6,6 +6,7 @@ use App\Http\Controllers\Front\TermsController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Admin\AdminHomePageController;
 
 
 
@@ -34,5 +35,6 @@ Route::middleware(['admin:admin'])->group(function () {
     Route::get('/admin/home', [AdminHomeController::class, 'index'])->name('admin_home');
     Route::get('/admin/edit-profile' , [AdminProfileController::class , 'index'])->name('admin_edit_profile');
     Route::post('/admin/edit-profile-submit', [AdminProfileController::class, 'profile_submit'])->name('admin_profile_submit');
+    Route::get('/admin/home-page' , [AdminHomePageController::class , 'index'])->name('admin_home_page');
 
 });
