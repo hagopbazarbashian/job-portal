@@ -15,6 +15,14 @@ body {
 table.t1 tr td {
     border-top: 1px solid #e3e3e3;
 }
+.custom-tab .nav-pills .nav-link{
+    background-color: #c8cef1;
+}
+
+.custom-tab .nav-pills .nav-link.active{
+    color: #fff!important;
+    background-color: #6777ef!important;
+}
 
 .card.card-statistic-1 .card-header h4, .card.card-statistic-2 .card-header h4 {
     letter-spacing: normal;
