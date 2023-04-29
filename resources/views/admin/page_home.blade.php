@@ -6,7 +6,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin_home_update', $pagehomeitem->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row custom-tab">
                             <div class="col-lg-3 col-md-12">
@@ -61,7 +61,7 @@
                                                 </div>
                                                 <div class="mb-4">
                                                     <label class="form-label">Existing Background *</label>
-                                                    <img src="{{asset('uploads/$pagehomeitem->background')}}" alt="" class="w_300">
+                                                    <img src="{{ asset('uploads/' . $pagehomeitem->background) }}" alt="" class="w_300">
                                                 </div>
                                                 <div class="mb-4">
                                                     <label class="form-label">Change Background  *</label>
@@ -83,11 +83,11 @@
 
                                         <!-- Category Section end -->
                                     </div>
-                                
+
                                 </div>
-                                
+
                             </div>
-                            
+
                         </div>
                     </form>
                 </div>
