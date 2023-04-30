@@ -1,21 +1,19 @@
 @extends('front.layout.app')
 @section('main_content')
-<div class="slider" style="background-image: url({{asset('uploads/banner5.jpg')}})">
+<div class="slider" style="background-image: url('{{ asset('uploads/' . $page_home_data->background) }}');">
     <div class="bg"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="item">
-                    <div class="text">
-                        <h2>Find Your Desired Job</h2>
+                    <div class="text"> 
+                        <h2>{{$page_home_data->heading}}</h2>
                         <p>
-                            Search the best, perfect and suitable jobs
-                            that matches your skills in your expertise
-                            area.
+                            {!!$page_home_data->text!!}
                         </p>
                     </div>
                     <div class="search-section">
-                        <form action="jobs.html" method="post">
+                        <form action="jobs.html" method="post">  
                             <div class="inner">
                                 <div class="row">
                                     <div class="col-lg-3">
@@ -24,7 +22,7 @@
                                                 type="text"
                                                 name=""
                                                 class="form-control"
-                                                placeholder="Job Title"
+                                                placeholder="{{$page_home_data->job_title}}"
                                             />
                                         </div>
                                     </div>
@@ -35,7 +33,7 @@
                                                 class="form-select select2"
                                             >
                                                 <option value="">
-                                                    Job Location
+                                                 {{$page_home_data->job_location}}
                                                 </option>
                                                 <option value="">
                                                     Australia
@@ -68,7 +66,7 @@
                                                 class="form-select select2"
                                             >
                                                 <option value="">
-                                                    Job Category
+                                                {{$page_home_data->job_category}}
                                                 </option>
                                                 <option value="">
                                                     Accounting
@@ -93,7 +91,7 @@
                                             <i
                                                 class="fas fa-search"
                                             ></i>
-                                            Search
+                                            {{$page_home_data->search}}
                                         </button>
                                     </div>
                                 </div>

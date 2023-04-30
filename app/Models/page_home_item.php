@@ -10,7 +10,7 @@ class page_home_item extends Model
     protected $fillable = [
         'heading',
         'text',
-        'job_title',
+        'job_title',   
         'job_location',
         'job_category',
         'search',

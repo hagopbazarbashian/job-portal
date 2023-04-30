@@ -35,7 +35,7 @@
                                                     <div class="col-lg-6 col-md-6">
                                                         <div class="mb-4">
                                                             <label class="form-label">Job Title *</label>
-                                                            <input type="text" class="form-control" name="job_title " value="{{$pagehomeitem->job_title}}">
+                                                            <input type="text" class="form-control" name="job_title " value="{{$pagehomeitem->job_title}}" >
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6 col-md-6">
