@@ -14,7 +14,7 @@ class AdminHomePageController extends Controller
 
         return view('admin.page_home')->with([
 
-          'pagehomeitem'=>$pagehomeitem
+          'pagehomeitem'=>$pagehomeitem,
 
         ]);
       }
@@ -39,7 +39,7 @@ class AdminHomePageController extends Controller
             $image = $request->file('background');
             $fileName = $image->hashName();
             $image->move(public_path('uploads'), $fileName);
-            
+
             $pagehomeitem->background = $fileName;
 
             if (file_exists(public_path($pagehomeitem->background))) {
@@ -49,7 +49,7 @@ class AdminHomePageController extends Controller
         }
 
         $pagehomeitem->save();
-  
+
 
         $pagehomeitem->update([
             'heading'=>$request->heading,
