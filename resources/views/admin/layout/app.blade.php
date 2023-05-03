@@ -14,7 +14,7 @@
     @include('admin.layout.scripts')
 
 </head>
-
+ 
 <body>
 <div id="app">
     <div class="main-wrapper">

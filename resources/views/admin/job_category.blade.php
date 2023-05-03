@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="example1">
-                            <thead>
+                            <thead>  
                             <tr>
                                 <th>SL</th>
                                 <th>Category Name</th>
@@ -36,7 +36,7 @@
                                         </td>
                                         <td class="pt_10 pb_10">
                                             <a href="{{ route('admin_job_category_edit',$jobcategory->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                            <a href="" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');">Delete</a>
+                                            <a href="{{route('admin_job_category_delete' ,$jobcategory->id )}}" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach

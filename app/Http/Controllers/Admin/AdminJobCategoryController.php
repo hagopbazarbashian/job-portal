@@ -20,7 +20,7 @@ class AdminJobCategoryController extends Controller
 
         return view('admin.job_category_create');
     }
-
+ 
     public function store(Request $request){
         $request->validate([
             'name'=>'required',
@@ -58,4 +58,10 @@ class AdminJobCategoryController extends Controller
         return redirect()->route('admin_job_category')->with('succes' , 'Update Successfully');
 
     }
+
+    public function delete($id){
+        $jobCategory = JobCategory::where('id' , $id)->delete();
+        return redirect()->route('admin_job_category')->with('succes' , 'Data is deleted Successfully');
+    }
+
 }
