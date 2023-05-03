@@ -21,6 +21,7 @@
                                 <th>SL</th>
                                 <th>Category Name</th>
                                 <th>Category Icon</th>
+                                <th>Icon preview</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -30,8 +31,11 @@
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $jobcategory->name }}</td>
                                         <td>{{ $jobcategory->icon }}</td>
+                                        <td> 
+                                            <i class="{{ $jobcategory->icon }}"></i>
+                                        </td>
                                         <td class="pt_10 pb_10">
-                                            <a href="" class="btn btn-primary btn-sm">Edit</a>
+                                            <a href="{{ route('admin_job_category_edit',$jobcategory->id) }}" class="btn btn-primary btn-sm">Edit</a>
                                             <a href="" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');">Delete</a>
                                         </td>
                                     </tr>

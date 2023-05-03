@@ -36,4 +36,26 @@ class AdminJobCategoryController extends Controller
 
 
     }
+
+    public function edit($id){
+        $jobCategory = JobCategory::where('id' , $id)->first();
+        return view('admin.job_category_edit',compact('jobCategory'));
+    }
+
+    public function update(Request $request , $id){
+        $request->validate([
+            'name'=>'required',
+            'icon'=>'required'
+       ]);
+
+        $jobCategory = JobCategory::where('id' , $id)->first();
+
+        $jobCategory->update([
+           'name'=>$request->name,
+           'icon'=>$request->icon
+        ]);
+
+        return redirect()->route('admin_job_category')->with('succes' , 'Update Successfully');
+
+    }
 }
