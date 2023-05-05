@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('whychooseitems', function (Blueprint $table) {
             $table->id();
-            $table->text('icon');
+            $table->text('icon');  
             $table->text('heading');
             $table->text('text');
             $table->timestamps();
