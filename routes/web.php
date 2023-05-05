@@ -19,7 +19,7 @@ Route::get('job_categories',[JobCategoryController::class , 'categories'])->name
 
 // PayPal Payment
 Route::post('paypal/payment' , [PayPallController::class , 'payment'])->name('payment');
-Route::get('paypal/success' , [PayPallController::class , 'success'])->name('paypal_success');
+Route::get('paypal/success' , [PayPallController::class , 'success'])->name('paypal_success');  
 Route::get('paypal/cancel' , [PayPallController::class , 'cancel'])->name('paypal_cancel');
 // End Pypal
 
