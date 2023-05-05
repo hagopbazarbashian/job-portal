@@ -63,5 +63,5 @@ class AdminJobCategoryController extends Controller
         $jobCategory = JobCategory::where('id' , $id)->delete();
         return redirect()->route('admin_job_category')->with('succes' , 'Data is deleted Successfully');
     }
-
+   
 }

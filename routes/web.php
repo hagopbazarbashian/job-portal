@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\TermsController;
+use App\Http\Controllers\Front\JobCategoryController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Admin\AdminJobCategoryController;
 
 Route::get('/',[HomeController::class , 'index'])->name('home');
 Route::get('terms',[TermsController::class , 'index'])->name('terms');
+Route::get('job_categories',[JobCategoryController::class , 'categories'])->name('job_categories');
 
 // PayPal Payment
 Route::post('paypal/payment' , [PayPallController::class , 'payment'])->name('payment');

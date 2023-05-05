@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index(){
         $page_home_data = page_home_item::where('id' , 1)->first();
-        $jobCategorys = JobCategory::get();
+        $jobCategorys = JobCategory::orderBy('name' , 'asc')->take(9)->get();
 
         return view('front.home', compact('page_home_data', 'jobCategorys'));
     }

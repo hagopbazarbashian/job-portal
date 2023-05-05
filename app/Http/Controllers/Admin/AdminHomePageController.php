@@ -29,7 +29,10 @@ class AdminHomePageController extends Controller
             'job_title'=>'required',
             'job_location'=>'required',
             'job_category'=>'required',
-            'search'=>'required'
+            'search'=>'required',
+            'job_category_heading'=>'required',
+            'job_category_subheading'=>'required'
+
       ]);
 
         $pagehomeitem =  page_home_item::where('id' , $id)->first();
@@ -49,7 +52,7 @@ class AdminHomePageController extends Controller
         }
 
         $pagehomeitem->save();
-
+ 
 
         $pagehomeitem->update([
             'heading'=>$request->heading,
@@ -57,10 +60,13 @@ class AdminHomePageController extends Controller
             'job_title'=>$request->job_title,
             'job_location'=>$request->job_location,
             'job_category'=>$request->job_category,
-            'search'=>$request->job_category
+            'search'=>$request->job_category,
+            'job_category_heading'=>$request->job_category_heading,
+            'job_category_subheading'=>$request->job_category_subheading,
+            'job_category_status'=>$request->job_category_status
         ]);
 
-        return redirect()->back()->with('succes' , 'Successfully updated');
+        return redirect()->back()->with('succes' , 'Data is updated  Successfully');
 
      }
 }
