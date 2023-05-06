@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminHomePageController;
 use App\Http\Controllers\Admin\AdminJobCategoryController;
+use App\Http\Controllers\Admin\AdminWhyChooseController;
 
 
 
@@ -19,7 +20,7 @@ Route::get('job_categories',[JobCategoryController::class , 'categories'])->name
 
 // PayPal Payment
 Route::post('paypal/payment' , [PayPallController::class , 'payment'])->name('payment');
-Route::get('paypal/success' , [PayPallController::class , 'success'])->name('paypal_success');  
+Route::get('paypal/success' , [PayPallController::class , 'success'])->name('paypal_success');
 Route::get('paypal/cancel' , [PayPallController::class , 'cancel'])->name('paypal_cancel');
 // End Pypal
 
@@ -46,5 +47,12 @@ Route::middleware(['admin:admin'])->group(function () {
     Route::get('/admin/job-category/edit/{id}' , [AdminJobCategoryController::class , 'edit'])->name('admin_job_category_edit');
     Route::post('/admin/job-category/update/{id}' , [AdminJobCategoryController::class , 'update'])->name('admin_job_category_update');
     Route::get('/admin/job-category/delete/{id}' , [AdminJobCategoryController::class , 'delete'])->name('admin_job_category_delete');
+
+    Route::get('/admin/why-choose-item/view' , [AdminWhyChooseController::class , 'index'])->name('admin_why_choose_item');
+    Route::get('/admin/why-choose-item/add' , [AdminWhyChooseController::class , 'create'])->name('admin_why_choose_item_create');
+    Route::post('/admin/why-choose-item/store' , [AdminWhyChooseController::class , 'store'])->name('admin_why_choose_item_store');
+    Route::get('/admin/why-choose-item/edit/{id}' , [AdminWhyChooseController::class , 'edit'])->name('admin_why_choose_item_edit');
+    Route::post('/admin/why-choose-item/update/{id}' , [AdminWhyChooseController::class , 'update'])->name('admin_why_choose_item_update');
+    Route::get('/admin/why-choose-item/delete/{id}' , [AdminWhyChooseController::class , 'delete'])->name('admin_why_choose_item_delete');
 
 });

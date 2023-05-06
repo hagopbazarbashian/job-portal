@@ -13,6 +13,7 @@
                         <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                            <button class="nav-link active" id="v-pills-1-tab" data-bs-toggle="pill" data-bs-target="#v-pills-1" type="button" role="tab" aria-controls="v-pills-1" aria-selected="true">Search</button>
                            <button class="nav-link" id="v-pills-2-tab" data-bs-toggle="pill" data-bs-target="#v-pills-2" type="button" role="tab" aria-controls="v-pills-2" aria-selected="false">Job Category</button>
+                           <button class="nav-link" id="v-pills-3-tab" data-bs-toggle="pill" data-bs-target="#v-pills-3" type="button" role="tab" aria-controls="v-pills-3" aria-selected="false">Why Choose Us</button>
                         </div>
                      </div>
 
@@ -96,7 +97,40 @@
                              </div>
                               <!-- Category Section end -->
                            </div>
-                        </div> 
+                           <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-3-tab" tabindex="0">
+                            {{-- Why Choose Us --}}
+                            <div class="row">
+                              <div class="col-md-12">
+                                 <div class="mb-4">
+                                      <label class="form-label">Heading *</label>
+                                      <input type="text" class="form-control" name="why_choose_heading" value="{{$pagehomeitem->job_category_heading}}" />
+                                 </div>
+                                 <div class="mb-4">
+                                      <label class="form-label">Sub Heading *</label>
+                                      <input type="text" class="form-control" name="why_choose_subheading" value="{{$pagehomeitem->job_category_subheading}}" />
+                                 </div>
+                                 <div class="mb-4">
+                                    <label class="form-label">Existing Background *</label>
+                                    <img src="{{ asset('uploads/' . $pagehomeitem->why_choose_background) }}" alt="" class="w_300" />
+                               </div>
+                               <div class="mb-4">
+                                <label class="form-label">Change Background *</label>
+                                <div>
+                                   <input type="file" class="form-control mt_10" name="why_choose_background" />
+                                </div>
+                             </div>
+                            <div class="mb-4">
+                                <label class="form-label">Status *</label>
+                                <select name="why_choose_status" class="form-control select2">
+                                    <option value="show" @if($pagehomeitem->job_category_status == 'show') selected @endif>Show</option>
+                                    <option value="hide" @if($pagehomeitem->job_category_status == 'hide') selected @endif>Hide</option>
+                                </select>
+                            </div>
+                              </div>
+                           </div>
+                           {{-- Why Choose Us End --}}
+                         </div>
+                        </div>
                         <div class="mb-4">
                            <label class="form-label"></label>
                            <button type="submit" class="btn btn-primary">Update</button>

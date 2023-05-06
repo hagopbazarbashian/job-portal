@@ -17,6 +17,10 @@ class page_home_item extends Model
         'background',
         'job_category_heading',
         'job_category_subheading',
-        'job_category_status'
+        'job_category_status',
+        'why_choose_heading',
+        'why_choose_subheading',
+        'why_choose_background',
+        'why_choose_status'
     ];
 }
