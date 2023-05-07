@@ -21,6 +21,9 @@ class page_home_item extends Model
         'why_choose_heading',
         'why_choose_subheading',
         'why_choose_background',
-        'why_choose_status'
+        'why_choose_status',
+        'featured_jobs_heading',
+        'featured_jobs_subheading',
+        'featured_jobs_status' 
     ];
 }

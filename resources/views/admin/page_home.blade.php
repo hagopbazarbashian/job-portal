@@ -11,9 +11,10 @@
                   <div class="row custom-tab">
                      <div class="col-lg-3 col-md-12">
                         <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                           <button class="nav-link active" id="v-pills-1-tab" data-bs-toggle="pill" data-bs-target="#v-pills-1" type="button" role="tab" aria-controls="v-pills-1" aria-selected="true">Search</button>
-                           <button class="nav-link" id="v-pills-2-tab" data-bs-toggle="pill" data-bs-target="#v-pills-2" type="button" role="tab" aria-controls="v-pills-2" aria-selected="false">Job Category</button>
-                           <button class="nav-link" id="v-pills-3-tab" data-bs-toggle="pill" data-bs-target="#v-pills-3" type="button" role="tab" aria-controls="v-pills-3" aria-selected="false">Why Choose Us</button>
+                           <button class="nav-link active" id="v-pills-1-tab" data-bs-toggle="pill" data-bs-target="#v-pills-1" type="button" role="tab" aria-controls="v-pills-1" aria-selected="true">Search</button><br>
+                           <button class="nav-link" id="v-pills-2-tab" data-bs-toggle="pill" data-bs-target="#v-pills-2" type="button" role="tab" aria-controls="v-pills-2" aria-selected="false">Job Category</button><br>
+                           <button class="nav-link" id="v-pills-3-tab" data-bs-toggle="pill" data-bs-target="#v-pills-3" type="button" role="tab" aria-controls="v-pills-3" aria-selected="false">Why Choose Us</button><br>
+                           <button class="nav-link" id="v-pills-4-tab" data-bs-toggle="pill" data-bs-target="#v-pills-4" type="button" role="tab" aria-controls="v-pills-4" aria-selected="false">Featured Jobs</button><br>
                         </div>
                      </div>
 
@@ -103,11 +104,11 @@
                               <div class="col-md-12">
                                  <div class="mb-4">
                                       <label class="form-label">Heading *</label>
-                                      <input type="text" class="form-control" name="why_choose_heading" value="{{$pagehomeitem->job_category_heading}}" />
+                                      <input type="text" class="form-control" name="why_choose_heading" value="{{$pagehomeitem->why_choose_heading}}" />
                                  </div>
                                  <div class="mb-4">
                                       <label class="form-label">Sub Heading *</label>
-                                      <input type="text" class="form-control" name="why_choose_subheading" value="{{$pagehomeitem->job_category_subheading}}" />
+                                      <input type="text" class="form-control" name="why_choose_subheading" value="{{$pagehomeitem->why_choose_subheading}}" />
                                  </div>
                                  <div class="mb-4">
                                     <label class="form-label">Existing Background *</label>
@@ -122,13 +123,36 @@
                             <div class="mb-4">
                                 <label class="form-label">Status *</label>
                                 <select name="why_choose_status" class="form-control select2">
-                                    <option value="show" @if($pagehomeitem->job_category_status == 'show') selected @endif>Show</option>
-                                    <option value="hide" @if($pagehomeitem->job_category_status == 'hide') selected @endif>Hide</option>
+                                    <option value="show" @if($pagehomeitem->why_choose_status == 'show') selected @endif>Show</option>
+                                    <option value="hide" @if($pagehomeitem->why_choose_status == 'hide') selected @endif>Hide</option>
                                 </select>
                             </div>
                               </div>
                            </div>
                            {{-- Why Choose Us End --}}
+                         </div>
+                         <div class="tab-pane fade" id="v-pills-4" role="tabpanel" aria-labelledby="v-pills-4-tab" tabindex="0">
+                            {{-- Featured Jobs --}}
+                            <div class="row">
+                              <div class="col-md-12">
+                                 <div class="mb-4">
+                                      <label class="form-label">Heading *</label>
+                                      <input type="text" class="form-control" name="featured_jobs_heading" value="{{$pagehomeitem->featured_jobs_heading}}" />
+                                 </div>
+                                 <div class="mb-4">
+                                      <label class="form-label">Sub Heading *</label>
+                                      <input type="text" class="form-control" name="featured_jobs_subheading" value="{{$pagehomeitem->featured_jobs_subheading}}" />
+                                 </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Status *</label>
+                                    <select name="featured_jobs_status" class="form-control select2">
+                                        <option value="show" @if($pagehomeitem->featured_jobs_status == 'show') selected @endif>Show</option>
+                                        <option value="hide" @if($pagehomeitem->featured_jobs_status == 'hide') selected @endif>Hide</option>
+                                    </select>
+                                </div>
+                              </div>
+                           </div>
+                           {{-- Featured Jobs End --}}
                          </div>
                         </div>
                         <div class="mb-4">
