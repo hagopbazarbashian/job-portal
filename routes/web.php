@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminHomePageController;
 use App\Http\Controllers\Admin\AdminJobCategoryController;
 use App\Http\Controllers\Admin\AdminWhyChooseController;
+use App\Http\Controllers\Admin\TestMonialsController;
 
 
 
@@ -54,5 +55,13 @@ Route::middleware(['admin:admin'])->group(function () {
     Route::get('/admin/why-choose-item/edit/{id}' , [AdminWhyChooseController::class , 'edit'])->name('admin_why_choose_item_edit');
     Route::post('/admin/why-choose-item/update/{id}' , [AdminWhyChooseController::class , 'update'])->name('admin_why_choose_item_update');
     Route::get('/admin/why-choose-item/delete/{id}' , [AdminWhyChooseController::class , 'delete'])->name('admin_why_choose_item_delete');
+
+
+    Route::get('/admin/test-monials/view' , [TestMonialsController::class , 'index'])->name('admin_test_monials');
+    Route::get('/admin/test-monials/add' , [TestMonialsController::class , 'create'])->name('admin_test_monials_create');
+    Route::post('/admin/test-monials/store' , [TestMonialsController::class , 'store'])->name('admin_test_monials_store');
+    Route::get('/admin/test-monials/edit/{id}' , [TestMonialsController::class , 'edit'])->name('admin_test_monials_edit');
+    Route::post('/admin/test-monials/update/{id}' , [TestMonialsController::class , 'update'])->name('admin_test_monials_update');
+    Route::get('/admin/test-monials/delete/{id}' , [TestMonialsController::class , 'delete'])->name('admin_test_monials_delete');
 
 });

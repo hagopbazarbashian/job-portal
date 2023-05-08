@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class testmonials extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'name',
+        'designation',
+        'comment',
+        'photo'
+    ];
+
 }
