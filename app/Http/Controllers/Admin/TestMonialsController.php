@@ -36,7 +36,7 @@ class TestMonialsController extends Controller
 
         $monials = testmonials::where('id' , $testmonials->id)->first();
 
-        
+
         $image = $request->file('photo');
         $fileName = $image->hashName();
         $image->move(public_path('uploads'), $fileName);
@@ -45,17 +45,13 @@ class TestMonialsController extends Controller
             'photo'=>$fileName
         ]);
 
-        if (file_exists(public_path($pagehomeitem->why_choose_background))) {
-        unlink(public_path($pagehomeitem->why_choose_background));
-        }
-
-       return "hello";
+        return redirect()->route('admin_test_monials')->with('succes' , 'Created Successfully');
 
     }
 
     public function edit($id){
-        $whychooseitem = whychooseitem::where('id' , $id)->first();
-        return view('admin.why_choose_items_edit',compact('whychooseitem'));
+        $testmonials = testmonials::where('id' , $id)->first();
+        return view('admin.test_monial_edit',compact('testmonials'));
     }
 
     public function update(Request $request , $id){

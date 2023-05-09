@@ -14,7 +14,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('admin_test_monials_store') }}" method="post">
+                    <form action="{{ route('admin_test_monials_store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group mb-3">
                             <label>Photo *</label>
