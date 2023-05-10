@@ -24,6 +24,9 @@ class page_home_item extends Model
         'why_choose_status',
         'featured_jobs_heading',
         'featured_jobs_subheading',
-        'featured_jobs_status' 
+        'featured_jobs_status',
+        'testmonial_heading',
+        'testmonial_background',
+        'testmonial_status'
     ];
 }

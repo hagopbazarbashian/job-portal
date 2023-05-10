@@ -24,7 +24,8 @@ class TestMonialsController extends Controller
 
         $request->validate([
             'name'=>'required',
-            'designation'=>'required'
+            'designation'=>'required',
+            'comment'=>'required'
        ]);
 
 
@@ -59,24 +60,41 @@ class TestMonialsController extends Controller
         $request->validate([
             'name'=>'required',
             'designation'=>'required',
-            'Comment'=>'required'
+            'comment'=>'required'
        ]);
 
-       $whychooseitem = whychooseitem::where('id' , $id)->first();
+       $testmonials = testmonials::where('id' , $id)->first();
 
-        $whychooseitem->update([
-           'icon'=>$request->icon,
-           'heading'=>$request->heading,
-           'text'=>$request->text
+       if($request->hasFile('photo')) {
+
+            $image = $request->file('photo');
+            $fileName = $image->hashName();
+            $image->move(public_path('uploads'), $fileName);
+
+            $testmonials->photo = $fileName;
+
+            if (file_exists(public_path('uploads/'.$testmonials->photo))) {
+               unlink(public_path('uploads/'.$testmonials->photo));
+            }
+
+        }
+         $testmonials->save();
+
+        $testmonials->update([
+           'name'=>$request->name,
+           'designation'=>$request->designation,
+           'comment'=>$request->comment
         ]);
 
-        return redirect()->route('admin_why_choose_item')->with('succes' , 'Update Successfully');
+        return redirect()->route('admin_test_monials')->with('succes' , 'Update Successfully');
 
     }
 
     public function delete($id){
-        $whychooseitem = whychooseitem::where('id' , $id)->delete();
-        return redirect()->route('admin_why_choose_item')->with('succes' , 'Data is deleted Successfully');
+        $testmonials = testmonials::where('id' , $id)->first();
+        unlink(public_path('uploads/'.$testmonials->photo));
+        testmonials::where('id' , $id)->delete();
+        return redirect()->route('admin_test_monials')->with('succes' , 'Data is deleted Successfully');
     }
 
 

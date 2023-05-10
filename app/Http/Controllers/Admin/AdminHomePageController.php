@@ -35,7 +35,8 @@ class AdminHomePageController extends Controller
             'why_choose_heading'=>'required',
             'why_choose_status'=>'required',
             'featured_jobs_heading'=>'required',
-            'featured_jobs_subheading'=>'required'
+            'featured_jobs_subheading'=>'required',
+            'testmonial_heading'=>'required',
 
         ]);
 
@@ -69,6 +70,20 @@ class AdminHomePageController extends Controller
 
         }
 
+        if($request->hasFile('testmonial_background')) {
+
+            $image = $request->file('testmonial_background');
+            $fileName = $image->hashName();
+            $image->move(public_path('uploads'), $fileName);
+
+            $pagehomeitem->testmonial_background = $fileName;
+
+            if (file_exists(public_path($pagehomeitem->testmonial_background))) {
+              unlink(public_path($pagehomeitem->testmonial_background));
+            }
+
+        }
+
 
         $pagehomeitem->save();
 
@@ -91,7 +106,10 @@ class AdminHomePageController extends Controller
 
             'featured_jobs_heading'=>$request->featured_jobs_heading,
             'featured_jobs_subheading'=>$request->featured_jobs_subheading,
-            'featured_jobs_status'=>$request->featured_jobs_status
+            'featured_jobs_status'=>$request->featured_jobs_status,
+
+            'testmonial_heading'=>$request->testmonial_heading,
+            'testmonial_status'=>$request->testmonial_status
         ]);
 
         return redirect()->back()->with('succes' , 'Data is updated  Successfully');
