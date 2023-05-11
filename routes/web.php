@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AdminHomePageController;
 use App\Http\Controllers\Admin\AdminJobCategoryController;
 use App\Http\Controllers\Admin\AdminWhyChooseController;
 use App\Http\Controllers\Admin\TestMonialsController;
+use App\Http\Controllers\Admin\AdminPostController;
 
 
 
@@ -63,5 +64,12 @@ Route::middleware(['admin:admin'])->group(function () {
     Route::get('/admin/test-monials/edit/{id}' , [TestMonialsController::class , 'edit'])->name('admin_test_monials_edit');
     Route::post('/admin/test-monials/update/{id}' , [TestMonialsController::class , 'update'])->name('admin_test_monials_update');
     Route::get('/admin/test-monials/delete/{id}' , [TestMonialsController::class , 'delete'])->name('admin_test_monials_delete');
+
+    Route::get('/admin/post/view' , [AdminPostController::class , 'index'])->name('admin_post');
+    Route::get('/admin/post/add' , [AdminPostController::class , 'create'])->name('admin_post_create');
+    Route::post('/admin/post/store' , [AdminPostController::class , 'store'])->name('admin_post_store');
+    Route::get('/admin/post/edit/{id}' , [AdminPostController::class , 'edit'])->name('admin_post_edit');
+    Route::post('/admin/post/update/{id}' , [AdminPostController::class , 'update'])->name('admin_post_update');
+    Route::get('/admin/post/delete/{id}' , [AdminPostController::class , 'delete'])->name('admin_post_delete');
 
 });
