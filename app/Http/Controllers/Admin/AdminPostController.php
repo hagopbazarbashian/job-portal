@@ -26,7 +26,7 @@ class AdminPostController extends Controller
      */
     public function create()
     {
-        //
+         return view('admin.post_create');
     }
 
     /**
@@ -37,7 +37,36 @@ class AdminPostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title'=>'required',
+            'slug'=>'required',
+            'short_discription'=>'required',
+            'discription'=>'required'
+       ]);
+
+
+         $Post = Post::create([
+            'title'=>$request->title,
+            'slug'=>$request->slug,
+            'short_discription'=>$request->short_discription,
+            'discription'=>$request->discription,
+            'total_view'=>'0'
+
+        ]);
+
+        $monials = Post::where('id' , $Post->id)->first();
+
+
+        $image = $request->file('photo');
+        $fileName = $image->hashName();
+        $image->move(public_path('uploads'), $fileName);
+
+        $monials->update([
+            'photo'=>$fileName
+        ]);
+
+        return redirect()->route('admin_post')->with('succes' , 'Created Successfully');
+
     }
 
     /**

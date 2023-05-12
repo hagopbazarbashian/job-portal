@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('heading', 'Edit Job Category')
+@section('heading', 'Edit Post')
 
 @section('button')
 <div>
@@ -9,7 +9,7 @@
 @endsection
 
 @section('main_content')
-<div class="section-body">  
+<div class="section-body">
     <div class="row">
         <div class="col-12">
             <div class="card">
