@@ -8,6 +8,7 @@ use App\Models\page_home_item;
 use App\Models\JobCategory;
 use App\Models\whychooseitem;
 use App\Models\testmonials;
+use App\Models\Post;
 
 class HomeController extends Controller
 {
@@ -16,7 +17,8 @@ class HomeController extends Controller
         $jobCategorys = JobCategory::orderBy('name' , 'asc')->take(9)->get();
         $whychooseitems = whychooseitem::orderBy('id' , 'asc')->get();
         $testmonials = testmonials::orderBy('id' , 'asc')->get();
+        $posts = Post::orderBy('id' , 'asc')->get();
 
-        return view('front.home', compact('page_home_data', 'jobCategorys','whychooseitems','testmonials'));
+        return view('front.home', compact('page_home_data', 'jobCategorys','whychooseitems','testmonials','posts'));
     }
 }

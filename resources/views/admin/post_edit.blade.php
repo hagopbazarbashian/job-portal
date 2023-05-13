@@ -4,7 +4,7 @@
 
 @section('button')
 <div>
-    <a href="{{ route('admin_job_category') }}" class="btn btn-primary"><i class="fas fa-plus"></i>Show All</a>
+    <a href="{{ route('admin_post') }}" class="btn btn-primary"><i class="fas fa-plus"></i>Show All</a>
 </div>
 @endsection
 
@@ -14,12 +14,12 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('admin_test_monials_update',$testmonials->id) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin_post_update',$post->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group mb-3">
                             <label>Existing photo</label>
                             <div>
-                                <img src="{{asset('uploads/'.$testmonials->photo)}}" alt="" class="w_150">
+                                <img src="{{asset('uploads/'.$post->photo)}}" alt="" class="w_150">
                             </div>
                         </div>
                         <div class="form-group mb-3">
@@ -29,16 +29,20 @@
                             </div>
                         </div>
                         <div class="form-group mb-3">
-                            <label>Name *</label>
-                            <input type="text" class="form-control" name="name" value="{{ $testmonials->name }}">
+                            <label>Title *</label>
+                            <input type="text" class="form-control" name="title" value="{{ $post->title }}">
                         </div>
                         <div class="form-group mb-3">
-                            <label>designation *</label>
-                            <input type="text" class="form-control" name="designation" value="{{ $testmonials->designation }}">
+                            <label>Slug *</label>
+                            <input type="text" class="form-control" name="slug" value="{{ $post->slug }}">
                         </div>
                         <div class="form-group mb-3">
-                            <label>Comment *</label>
-                            <textarea name="comment" class="form-control h_100" cols="30" rows="10">{!! $testmonials->comment !!}</textarea>
+                            <label>Short Discription *</label>
+                            <textarea name="short_discription" class="form-control editor" cols="30" rows="10">{!! $post->short_discription !!}</textarea>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Discription *</label>
+                            <textarea name="discription" class="form-control editor" cols="30" rows="10">{!! $post->discription !!}</textarea>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Update</button>

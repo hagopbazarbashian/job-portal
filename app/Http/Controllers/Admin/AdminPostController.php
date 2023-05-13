@@ -77,7 +77,7 @@ class AdminPostController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -88,7 +88,8 @@ class AdminPostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        return view('admin.post_edit' , compact('post'));
     }
 
     /**
@@ -100,7 +101,37 @@ class AdminPostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title'=>'required',
+            'slug'=>'required',
+            'short_discription'=>'required',
+            'discription'=>'required'
+       ]);
+
+       $post = Post::where('id' , $id)->first();
+
+       if($request->hasFile('photo')) {
+
+         if (file_exists(public_path('uploads/'.$post->photo))) {
+               unlink(public_path('uploads/'.$post->photo));
+            }
+            $image = $request->file('photo');
+            $fileName = $image->hashName();
+            $image->move(public_path('uploads'), $fileName);
+
+            $post->photo = $fileName;
+
+        }
+          $post->save();
+
+          $post->update([
+            'title'=>$request->title,
+            'slug'=>$request->slug,
+            'short_discription'=>$request->short_discription,
+            'discription'=>$request->discription
+        ]);
+
+        return redirect()->route('admin_post')->with('succes' , 'Update Successfully');
     }
 
     /**
@@ -109,8 +140,11 @@ class AdminPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $post = Post::where('id' , $id)->first();
+        unlink(public_path('uploads/'.$post->photo));
+        Post::where('id' , $id)->delete();
+        return redirect()->route('admin_post')->with('succes' , 'Data is deleted Successfully');
     }
 }
