@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\TermsController;
 use App\Http\Controllers\Front\JobCategoryController;
+use App\Http\Controllers\Front\PostController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\Admin\AdminPostController;
 
 Route::get('/',[HomeController::class , 'index'])->name('home');
 Route::get('terms',[TermsController::class , 'index'])->name('terms');
+Route::get('blog',[PostController::class , 'index'])->name('blog');
 Route::get('job_categories',[JobCategoryController::class , 'categories'])->name('job_categories');
 
 // PayPal Payment

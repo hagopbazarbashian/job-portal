@@ -37,6 +37,7 @@ class AdminHomePageController extends Controller
             'featured_jobs_heading'=>'required',
             'featured_jobs_subheading'=>'required',
             'testmonial_heading'=>'required',
+            'post_heading'=>'required'
 
         ]);
 
@@ -109,7 +110,11 @@ class AdminHomePageController extends Controller
             'featured_jobs_status'=>$request->featured_jobs_status,
 
             'testmonial_heading'=>$request->testmonial_heading,
-            'testmonial_status'=>$request->testmonial_status
+            'testmonial_status'=>$request->testmonial_status,
+
+            'post_heading'=>$request->post_heading,
+            'post_sub_heading'=>$request->post_sub_heading,
+            'post_status'=>$request->post_status
         ]);
 
         return redirect()->back()->with('succes' , 'Data is updated  Successfully');

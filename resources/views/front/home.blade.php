@@ -372,43 +372,44 @@
     </div>
  </div>
 @endif
-
+@if ($page_home_data->post_status == 'show')
 <div class="blog">
-   <div class="container">
-      <div class="row">
-         <div class="col-md-12">
-            <div class="heading">
-               <h2>Latest News</h2>
-               <p>
-                  Check our latest news from the following section
-               </p>
-            </div>
-         </div>
-      </div>
-      <div class="row">
-        @foreach ($posts as $item)
-        <div class="col-lg-4 col-md-6">
-            <div class="item">
-               <div class="photo">
-                  <img src="{{ asset('uploads/'.$item->photo) }}" alt="" />
-               </div>
-               <div class="text">
-                  <h2>
-                     <a href="post.html">{{ $item->title }}</a>
-                  </h2>
-                  <div class="short-des">
-                     <p>
-                        {!! $item->short_discription !!}
-                     </p>
-                  </div>
-                  <div class="button">
-                     <a href="post.html" class="btn btn-primary">Read More</a>
-                  </div>
-               </div>
-            </div>
-         </div>
-        @endforeach
-      </div>
-   </div>
-</div>
+    <div class="container">
+       <div class="row">
+          <div class="col-md-12">
+             <div class="heading">
+                <h2>{{$page_home_data->post_heading}}</h2>
+                <p>
+                   {!!$page_home_data->post_sub_heading!!}
+                </p>
+             </div>
+          </div>
+       </div>
+       <div class="row">
+         @foreach ($posts as $item)
+         <div class="col-lg-4 col-md-6">
+             <div class="item">
+                <div class="photo">
+                   <img src="{{ asset('uploads/'.$item->photo) }}" alt="" />
+                </div>
+                <div class="text">
+                   <h2>
+                      <a href="post.html">{{ $item->title }}</a>
+                   </h2>
+                   <div class="short-des">
+                      <p>
+                         {!! $item->short_discription !!}
+                      </p>
+                   </div>
+                   <div class="button">
+                      <a href="post.html" class="btn btn-primary">Read More</a>
+                   </div>
+                </div>
+             </div>
+          </div>
+         @endforeach
+       </div>
+    </div>
+ </div>
+@endif
 @endsection

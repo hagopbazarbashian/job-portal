@@ -31,7 +31,7 @@
                         <li class="nav-item">
                             <a href="companies.html" class="nav-link">
                                 Companies
-                            </a>  
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a href="pricing.html" class="nav-link">
@@ -42,7 +42,7 @@
                             <a href="faq.html" class="nav-link">FAQ</a>
                         </li>
                         <li class="nav-item">
-                            <a href="blog.html" class="nav-link">
+                            <a href="{{route('blog')}}" class="nav-link">
                                 Blog
                             </a>
                         </li>
