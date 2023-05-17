@@ -16,7 +16,8 @@ class PostController extends Controller
 
      public function detail(Request $request , $slug){
         $post_single = Post::where('slug' , $slug)->first();
-        dd($post_single);
+        $post_single->total_view = $post_single->total_view+1;
+        $post_single->update();
         return view('front.post' ,compact('post_single'));
      }
 }

@@ -13,7 +13,7 @@ use App\Http\Controllers\Admin\AdminJobCategoryController;
 use App\Http\Controllers\Admin\AdminWhyChooseController;
 use App\Http\Controllers\Admin\TestMonialsController;
 use App\Http\Controllers\Admin\AdminPostController;
-
+use App\Http\Controllers\Admin\AdminFaqController;
 
 
 
@@ -75,4 +75,13 @@ Route::middleware(['admin:admin'])->group(function () {
     Route::post('/admin/post/update/{id}' , [AdminPostController::class , 'update'])->name('admin_post_update');
     Route::get('/admin/post/delete/{id}' , [AdminPostController::class , 'delete'])->name('admin_post_delete');
 
+    Route::get('/admin/faq/view' , [AdminFaqController::class , 'index'])->name('admin_faq');
+    Route::get('/admin/faq/add' , [AdminFaqController::class , 'create'])->name('admin_faq_create');
+    Route::post('/admin/faq/store' , [AdminFaqController::class , 'store'])->name('admin_faq_store');
+    Route::get('/admin/faq/edit/{id}' , [AdminFaqController::class , 'edit'])->name('admin_faq_edit');
+    Route::post('/admin/faq/update/{id}' , [AdminFaqController::class , 'update'])->name('admin_faq_update');
+    Route::get('/admin/faq/delete/{id}' , [AdminFaqController::class , 'delete'])->name('admin_faq_delete');
+
+
 });
+  
