@@ -5,6 +5,7 @@ use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\TermsController;
 use App\Http\Controllers\Front\JobCategoryController;
 use App\Http\Controllers\Front\PostController;
+use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
@@ -22,6 +23,7 @@ Route::get('terms',[TermsController::class , 'index'])->name('terms');
 Route::get('job_categories',[JobCategoryController::class , 'categories'])->name('job_categories');
 Route::get('blog',[PostController::class , 'index'])->name('blog');
 Route::get('blog/{slug}',[PostController::class , 'detail'])->name('post');
+Route::get('faq',[FaqController::class , 'index'])->name('faq');
 
 // PayPal Payment
 Route::post('paypal/payment' , [PayPallController::class , 'payment'])->name('payment');
@@ -84,4 +86,3 @@ Route::middleware(['admin:admin'])->group(function () {
 
 
 });
-  

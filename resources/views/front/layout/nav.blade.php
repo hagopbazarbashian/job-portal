@@ -18,7 +18,7 @@
                     id="navbarSupportedContent"
                 >
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
+                        <li class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}">
                             <a href="{{ route('home') }}" class="nav-link">
                                 Home
                             </a>
@@ -38,10 +38,10 @@
                                 Pricing
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="faq.html" class="nav-link">FAQ</a>
+                        <li class="nav-item {{ request()->routeIs('faq') ? 'active' : '' }}">
+                            <a href="{{route('faq')}}" class="nav-link">FAQ</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item {{ request()->routeIs('blog') ? 'active' : '' }}">
                             <a href="{{route('blog')}}" class="nav-link">
                                 Blog
                             </a>
