@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\faq;
+use App\Models\pagefaqitem;
 
 class AdminFaqController extends Controller
 {
@@ -66,6 +67,34 @@ class AdminFaqController extends Controller
         $faq = faq::where('id' , $id)->first();
         faq::where('id' , $id)->delete();
         return redirect()->route('admin_faq')->with('succes' , 'Data is deleted Successfully');
+    }
+
+
+    public function index_faq_home(){
+        $pagefaqitem = pagefaqitem::where('id' , 1)->first();
+         return view('admin.page_faq' , compact('pagefaqitem'));
+    }
+
+    public function update_faq_home(Request $request , $id){
+
+        $pagefaqitem = pagefaqitem::where('id' , $id)->first();
+
+        $request->validate([
+            'heading'=>'required'
+       ]);
+
+
+        $pagefaqitem->update([
+            'heading'=>$request->heading,
+            'title'=>$request->title,
+            'meta_description'=>$request->meta_description
+        ]);
+
+
+        return redirect()->back()->with('succes' , 'Update Successfully');
+
+
+
     }
 
 }

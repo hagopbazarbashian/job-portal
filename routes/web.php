@@ -48,6 +48,12 @@ Route::middleware(['admin:admin'])->group(function () {
     Route::post('/admin/edit-profile-submit', [AdminProfileController::class, 'profile_submit'])->name('admin_profile_submit');
     Route::get('/admin/home-page' , [AdminHomePageController::class , 'index'])->name('admin_home_page');
     Route::post('/admin/home/update/{id}', [AdminHomePageController::class, 'update'])->name('admin_home_update');
+
+    Route::get('/admin/faq-page' , [AdminFaqController::class , 'index_faq_home'])->name('admin_faq_page');
+    Route::post('/admin/faq/{id}', [AdminFaqController::class, 'update_faq_home'])->name('admin_faq_page_update');
+
+
+
     Route::get('/admin/job-category/view' , [AdminJobCategoryController::class , 'index'])->name('admin_job_category');
     Route::get('/admin/job-category/add' , [AdminJobCategoryController::class , 'create'])->name('admin_job_category_create');
     Route::post('/admin/job-category/store' , [AdminJobCategoryController::class , 'store'])->name('admin_job_category_store');
