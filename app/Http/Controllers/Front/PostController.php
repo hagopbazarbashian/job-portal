@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\pageblogitems;
 
 class PostController extends Controller
 {
      public function index(){
         $posts = Post::paginate();
-        return view('front.blog' ,compact('posts'));
+        $pageblogitem = pageblogitems::first();
+        return view('front.blog' ,compact('posts' , 'pageblogitem'));
      }
 
 

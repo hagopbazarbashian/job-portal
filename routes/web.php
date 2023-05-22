@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\AdminWhyChooseController;
 use App\Http\Controllers\Admin\TestMonialsController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminFaqController;
+use App\Http\Controllers\Admin\AdminBlogController;
 
 
 
@@ -51,6 +52,9 @@ Route::middleware(['admin:admin'])->group(function () {
 
     Route::get('/admin/faq-page' , [AdminFaqController::class , 'index_faq_home'])->name('admin_faq_page');
     Route::post('/admin/faq/{id}', [AdminFaqController::class, 'update_faq_home'])->name('admin_faq_page_update');
+
+    Route::get('/admin/blog-page' , [AdminBlogController::class , 'index_blog_home'])->name('admin_blog_page');
+    Route::post('/admin/blog/{id}', [AdminBlogController::class, 'update_blog_home'])->name('admin_blog_page_update');
 
 
 

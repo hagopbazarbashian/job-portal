@@ -12,8 +12,8 @@ return new class extends Migration
      * @return void
      */
     public function up()
-    {  
-        Schema::create('pagefaqitems', function (Blueprint $table) {
+    {
+        Schema::create('pageblogitems', function (Blueprint $table) {
             $table->id();
             $table->text('heading');
             $table->text('title')->nullable();
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pagefaqitems');
+        Schema::dropIfExists('pageblogitems');
     }
 };

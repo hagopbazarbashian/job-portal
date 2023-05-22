@@ -11,11 +11,12 @@
 
             <li class="{{ request()->routeIs('admin_home') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_home') }}" data-bs-toggle="tooltip" data-bs-placement="right" title="Dashboard"><i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
 
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown {{ request()->routeIs('admin_home_page') ? 'active' : '' }}||{{ request()->routeIs('admin_faq_page') ? 'active' : '' }}||{{ request()->routeIs('admin_blog_page') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Page Settings</span></a>
                 <ul class="dropdown-menu">
-                    <li class=""><a class="nav-link {{ request()->routeIs('admin_home_page') ? 'active' : '' }}" href="{{ route('admin_home_page') }}"><i class="fas fa-angle-right"></i> Home</a></li>
-                    <li class=""><a class="nav-link {{ request()->routeIs('admin_faq_page') ? 'active' : '' }}" href="{{route('admin_faq_page')}}"><i class="fas fa-angle-right"></i>Faq</a></li>
+                    <li class="{{ request()->routeIs('admin_home_page') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_home_page') }}"><i class="fas fa-angle-right"></i> Home</a></li>
+                    <li class="{{ request()->routeIs('admin_faq_page') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin_faq_page')}}"><i class="fas fa-angle-right"></i>Faq</a></li>
+                    <li class="{{ request()->routeIs('admin_blog_page') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin_blog_page')}}"><i class="fas fa-angle-right"></i>Blog</a></li>
                 </ul>
             </li>
 
