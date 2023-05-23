@@ -19,7 +19,7 @@
                             <tr>
                                 <th>SL</th>
                                 <th>Photo</th>
-                                <th>Title</th>
+                                <th>Heading</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -30,7 +30,7 @@
                                         <td>
                                             <img src="{{asset('uploads/'. $jobcategory->photo)}}" alt="" class="w_150">
                                         </td>
-                                        <td>{{ $jobcategory->title}}</td>
+                                        <td>{{ $jobcategory->heading}}</td>
 
                                         <td class="pt_10 pb_10">
                                             <a href="{{ route('admin_post_edit',$jobcategory->id) }}" class="btn btn-primary btn-sm">Edit</a>

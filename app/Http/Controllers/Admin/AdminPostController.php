@@ -38,7 +38,7 @@ class AdminPostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=>'required',
+            'heading'=>'required',
             'slug'=>'required',
             'short_discription'=>'required',
             'discription'=>'required'
@@ -46,11 +46,13 @@ class AdminPostController extends Controller
 
 
          $Post = Post::create([
-            'title'=>$request->title,
+            'heading'=>$request->heading,
             'slug'=>$request->slug,
             'short_discription'=>$request->short_discription,
             'discription'=>$request->discription,
-            'total_view'=>'0'
+            'total_view'=>'0',
+            'title'=>$request->title,
+            'meta_description'=>$request->meta_description
 
         ]);
 
@@ -102,7 +104,7 @@ class AdminPostController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title'=>'required',
+            'heading'=>'required',
             'slug'=>'required',
             'short_discription'=>'required',
             'discription'=>'required'
@@ -125,10 +127,12 @@ class AdminPostController extends Controller
           $post->save();
 
           $post->update([
-            'title'=>$request->title,
+            'heading'=>$request->heading,
             'slug'=>$request->slug,
             'short_discription'=>$request->short_discription,
-            'discription'=>$request->discription
+            'discription'=>$request->discription,
+            'title'=>$request->title,
+            'meta_description'=>$request->meta_description
         ]);
 
         return redirect()->route('admin_post')->with('succes' , 'Update Successfully');

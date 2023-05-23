@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $fillable = [
-        'title',
-        'slug',
+        'heading',
+        'slug',  
         'short_discription',
         'discription',
         'total_view',
-        'photo'
+        'photo',
+        'title',
+        'meta_description'
     ];
 }
