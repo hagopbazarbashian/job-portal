@@ -6,6 +6,8 @@ use App\Http\Controllers\Front\TermsController;
 use App\Http\Controllers\Front\JobCategoryController;
 use App\Http\Controllers\Front\PostController;
 use App\Http\Controllers\Front\FaqController;
+use App\Http\Controllers\Front\ContactController;
+use App\Http\Controllers\Front\PrivacyController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
@@ -16,6 +18,9 @@ use App\Http\Controllers\Admin\TestMonialsController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminBlogController;
+use App\Http\Controllers\Admin\AdminTermsController;
+use App\Http\Controllers\Admin\AdminPrivacyPageController;
+use App\Http\Controllers\Admin\AdminContactController;
 
 
 
@@ -25,6 +30,9 @@ Route::get('job_categories',[JobCategoryController::class , 'categories'])->name
 Route::get('blog',[PostController::class , 'index'])->name('blog');
 Route::get('blog/{slug}',[PostController::class , 'detail'])->name('post');
 Route::get('faq',[FaqController::class , 'index'])->name('faq');
+Route::get('privacy',[PrivacyController::class , 'index'])->name('privacy');
+Route::get('contact',[ContactController::class , 'index'])->name('contact');
+Route::post('submit_contact' , [ContactController::class , 'submit_contact'])->name('submit_contact');
 
 // PayPal Payment
 Route::post('paypal/payment' , [PayPallController::class , 'payment'])->name('payment');
@@ -55,6 +63,17 @@ Route::middleware(['admin:admin'])->group(function () {
 
     Route::get('/admin/blog-page' , [AdminBlogController::class , 'index_blog_home'])->name('admin_blog_page');
     Route::post('/admin/blog/{id}', [AdminBlogController::class, 'update_blog_home'])->name('admin_blog_page_update');
+
+    Route::get('/admin/terms-page' , [AdminTermsController::class , 'index_terms_home'])->name('admin_terms_page');
+    Route::post('/admin/terms/{id}', [AdminTermsController::class, 'update_terms_home'])->name('admin_terms_update');
+
+    Route::get('/admin/privacy-page' , [AdminPrivacyPageController::class , 'index_privacy_home'])->name('admin_privacy_page');
+    Route::post('/admin/privacy/{id}', [AdminPrivacyPageController::class, 'update_privacy_home'])->name('admin_privacy_update');
+
+    Route::get('/admin/contact-page' , [AdminContactController::class , 'index_contact_home'])->name('admin_contact_page');
+    Route::post('/admin/contact/{id}', [AdminContactController::class, 'update_contact_home'])->name('admin_contact_update');
+
+
 
 
 

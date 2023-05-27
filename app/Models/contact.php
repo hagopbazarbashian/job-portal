@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class term extends Model
+class contact extends Model
 {
     protected $fillable = [
         'heading',
-        'content',
+        'map_code',
         'title',
         'meta_description'
     ];

@@ -1,14 +1,14 @@
 @extends('front.layout.app')
 @section('main_content')
-@section('seo_title'){{$term->title}}@endsection
-@section('meta_description'){{$term->meta_description}}@endsection
+@section('seo_title'){{$privacy->title}}@endsection
+@section('meta_description'){{$privacy->meta_description}}@endsection
 <div
 class="page-top" style="background-image: url('uploads/banner.jpg')">
 <div class="bg"></div>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h2>{{$term->heading}}</h2>
+            <h2>{{$privacy->heading}}</h2>
         </div>
     </div>
 </div>
@@ -19,7 +19,7 @@ class="page-top" style="background-image: url('uploads/banner.jpg')">
     <div class="row">
         <div class="col-md-12">
             <p>
-                {!!$term->content!!}
+                {!!$privacy->content!!}
             </p>
         </div>
     </div>

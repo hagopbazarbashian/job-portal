@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class term extends Model
+class privacy extends Model
 {
     protected $fillable = [
         'heading',
         'content',
-        'title',
+        'title',  
         'meta_description'
     ];
 }
