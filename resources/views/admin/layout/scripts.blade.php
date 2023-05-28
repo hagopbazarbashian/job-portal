@@ -7,7 +7,7 @@
     <script src="{{ asset('dist/js/stisla.js') }}"></script>
     <script src="{{ asset('dist/js/jscolor.js') }}"></script>
     <script src="{{ asset('dist/js/bootstrap-datepicker.min.js') }}"></script>
-    <script src="{{ asset('dist/js/bootstrap-timepicker.min.js') }}"></script>
+    <script src="{{ asset('dist/js/bootstrap-timepicker.min.js') }}"></script> 
     <script src="{{ asset('dist/js/bootstrap-tagsinput.min.js') }}"></script>
     <script src="{{ asset('dist/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('dist/js/jquery.dataTables.min.js') }}"></script>

@@ -2,6 +2,7 @@
   <link rel="stylesheet" href="{{ asset('dist-front/css/bootstrap.min.css') }}" />
   <link rel="stylesheet" href="{{ asset('dist-front/css/bootstrap-datepicker.min.css') }}" />
   <!--<link rel="stylesheet" href="css/jquery-ui.css" />-->
+  <link rel="stylesheet" href="{{ asset('dist/css/iziToast.min.css') }}">
   <link rel="stylesheet" href="{{ asset('dist-front/css/animate.min.css') }}" />
   <link rel="stylesheet" href="{{ asset('dist-front/css/magnific-popup.css') }}" />
   <link rel="stylesheet" href="{{ asset('dist-front/css/owl.carousel.min.css') }}" />

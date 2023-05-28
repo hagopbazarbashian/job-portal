@@ -35,7 +35,7 @@ class AdminWhyChooseController extends Controller
        return redirect()->route('admin_why_choose_item')->with('succes' , 'Data Save Successfully');
 
     }
-
+ 
     public function edit($id){
         $whychooseitem = whychooseitem::where('id' , $id)->first();
         return view('admin.why_choose_items_edit',compact('whychooseitem'));
