@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\AdminBlogController;
 use App\Http\Controllers\Admin\AdminTermsController;
 use App\Http\Controllers\Admin\AdminPrivacyPageController;
 use App\Http\Controllers\Admin\AdminContactController;
+use App\Http\Controllers\Admin\AdminJobCategoryItem;
 
 
 
@@ -38,7 +39,7 @@ Route::post('submit_contact' , [ContactController::class , 'submit_contact'])->n
 Route::post('paypal/payment' , [PayPallController::class , 'payment'])->name('payment');
 Route::get('paypal/success' , [PayPallController::class , 'success'])->name('paypal_success');
 Route::get('paypal/cancel' , [PayPallController::class , 'cancel'])->name('paypal_cancel');
-// End Pypal 
+// End Pypal
 
 
 /* Admin */
@@ -72,6 +73,9 @@ Route::middleware(['admin:admin'])->group(function () {
 
     Route::get('/admin/contact-page' , [AdminContactController::class , 'index_contact_home'])->name('admin_contact_page');
     Route::post('/admin/contact/{id}', [AdminContactController::class, 'update_contact_home'])->name('admin_contact_update');
+
+    Route::get('/admin/job-category-page' , [AdminJobCategoryItem::class , 'index_job_category_home'])->name('admin_job_category_page');
+    Route::post('/admin/job-category-page/{id}', [AdminJobCategoryItem::class, 'update_job_category_home'])->name('admin_job_category_page_update');
 
 
 

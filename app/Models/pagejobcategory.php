@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class pagejobcategory extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'heading',
+        'title',
+        'meta_description'
+    ];
 }

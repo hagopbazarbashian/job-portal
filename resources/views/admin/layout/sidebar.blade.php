@@ -20,6 +20,7 @@
                     <li class="{{ request()->routeIs('admin_terms_page') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin_terms_page')}}"><i class="fas fa-angle-right"></i>Terms</a></li>
                     <li class="{{ request()->routeIs('admin_privacy_page') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin_privacy_page')}}"><i class="fas fa-angle-right"></i>Privacy Policy</a></li>
                     <li class="{{ request()->routeIs('admin_contact_page') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin_contact_page')}}"><i class="fas fa-angle-right"></i>Contact</a></li>
+                    <li class="{{ request()->routeIs('admin_job_category_page') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin_job_category_page')}}"><i class="fas fa-angle-right"></i>Job Category</a></li>
                 </ul>
             </li>
 
