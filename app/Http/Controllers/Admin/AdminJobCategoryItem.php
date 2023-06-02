@@ -20,13 +20,11 @@ class AdminJobCategoryItem extends Controller
 
         $request->validate([
             'heading'=>'required',
-            'content'=>'required'
        ]);
 
 
         $pagejobcategory->update([
             'heading'=>$request->heading,
-            'content'=>$request->content,
             'title'=>$request->title,
             'meta_description'=>$request->meta_description
         ]);
