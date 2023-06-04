@@ -7,5 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class pricing extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'package_name',
+        'package_price',
+        'package_days',
+        'package_display_time',
+        'total_allowed_jobs',
+        'total_allowed_featured_jobs',
+        'total_allowed_photo',
+        'total_allowed_video'
+    ];
+
 }

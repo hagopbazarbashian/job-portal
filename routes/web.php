@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\AdminTermsController;
 use App\Http\Controllers\Admin\AdminPrivacyPageController;
 use App\Http\Controllers\Admin\AdminContactController;
 use App\Http\Controllers\Admin\AdminJobCategoryItem;
+use App\Http\Controllers\Admin\AdminPackageController;
 
 
 
@@ -116,6 +117,13 @@ Route::middleware(['admin:admin'])->group(function () {
     Route::get('/admin/faq/edit/{id}' , [AdminFaqController::class , 'edit'])->name('admin_faq_edit');
     Route::post('/admin/faq/update/{id}' , [AdminFaqController::class , 'update'])->name('admin_faq_update');
     Route::get('/admin/faq/delete/{id}' , [AdminFaqController::class , 'delete'])->name('admin_faq_delete');
+
+    Route::get('/admin/package/view' , [AdminPackageController::class , 'index'])->name('admin_package');
+    Route::get('/admin/package/add' , [AdminPackageController::class , 'create'])->name('admin_package_create');
+    Route::post('/admin/package/store' , [AdminPackageController::class , 'store'])->name('admin_package_store');
+    Route::get('/admin/package/edit/{id}' , [AdminPackageController::class , 'edit'])->name('admin_package_edit');
+    Route::post('/admin/package/update/{id}' , [AdminPackageController::class , 'update'])->name('admin_package_update');
+    Route::get('/admin/package/delete/{id}' , [AdminPackageController::class , 'delete'])->name('admin_package_delete');
 
 
 });

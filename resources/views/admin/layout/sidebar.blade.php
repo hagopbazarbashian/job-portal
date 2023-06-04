@@ -36,6 +36,7 @@
             <li class="{{ request()->routeIs('admin_test_monials') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin_test_monials')}}" data-bs-toggle="tooltip" data-bs-placement="right" title="Why Choose Items"><i class="fas fa-hand-point-right"></i> <span>Test Monials</span></a></li>
             <li class="{{ request()->routeIs('admin_post') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin_post')}}" data-bs-toggle="tooltip" data-bs-placement="right" title="Why Choose Items"><i class="fas fa-hand-point-right"></i> <span>Post</span></a></li>
             <li class="{{ request()->routeIs('admin_faq') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin_faq')}}" data-bs-toggle="tooltip" data-bs-placement="right" title="Why Choose Items"><i class="fas fa-hand-point-right"></i> <span>Faq</span></a></li>
+            <li class="{{ request()->routeIs('admin_package') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin_package')}}" data-bs-toggle="tooltip" data-bs-placement="right" title="Why Choose Items"><i class="fas fa-hand-point-right"></i> <span>Package</span></a></li>
         </ul>
     </aside>
 </div>
