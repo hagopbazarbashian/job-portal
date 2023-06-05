@@ -46,38 +46,50 @@ class AdminPackageController extends Controller
 
 
 
-        return redirect()->route('admin_faq')->with('succes' , 'Created Successfully');
+        return redirect()->route('admin_package')->with('succes' , 'Created Successfully');
 
     }
 
     public function edit($id){
-        $faq = faq::where('id' , $id)->first();
-        return view('admin.faq_edit',compact('faq'));
+        $pricingaa = pricing::where('id' , $id)->first();
+        return view('admin.package_edit',compact('pricingaa'));
     }
 
     public function update(Request $request , $id){
 
         $request->validate([
-            'question'=>'required',
-            'answer'=>'required'
+            'package_name'=>'required',
+            'package_price'=>'required',
+            'package_days'=>'required',
+            'package_display_time'=>'required',
+            'total_allowed_jobs'=>'required',
+            'total_allowed_featured_jobs'=>'required',
+            'total_allowed_photo'=>'required',
+            'total_allowed_video'=>'required',
        ]);
 
-       $faq = faq::where('id' , $id)->first();
+       $pricingaa = pricing::where('id' , $id)->first();
 
-        $faq->update([
-           'question'=>$request->question,
-           'answer'=>$request->answer
+        $pricingaa->update([
+            'package_name'=>$request->package_name,
+            'package_price'=>$request->package_price,
+            'package_days'=>$request->package_days,
+            'package_display_time'=>$request->package_display_time,
+            'total_allowed_jobs'=>$request->total_allowed_jobs,
+            'total_allowed_featured_jobs'=>$request->total_allowed_featured_jobs,
+            'total_allowed_photo'=>$request->total_allowed_photo,
+            'total_allowed_video'=>$request->total_allowed_video
         ]);
 
-        return redirect()->route('admin_faq')->with('succes' , 'Update Successfully');
+        return redirect()->route('admin_package')->with('succes' , 'Update Successfully');
 
     }
 
 
     public function delete($id){
-        $faq = faq::where('id' , $id)->first();
-        faq::where('id' , $id)->delete();
-        return redirect()->route('admin_faq')->with('succes' , 'Data is deleted Successfully');
+        $pricing = pricing::where('id' , $id)->first();
+        pricing::where('id' , $id)->delete();
+        return redirect()->route('admin_package')->with('succes' , 'Data is deleted Successfully');
     }
 
 }
