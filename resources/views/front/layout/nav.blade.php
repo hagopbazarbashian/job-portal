@@ -33,8 +33,8 @@
                                 Companies
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="pricing.html" class="nav-link">
+                        <li class="nav-item {{ request()->routeIs('Package') ? 'active' : '' }}">
+                            <a href="{{route('Package')}}" class="nav-link">
                                 Pricing
                             </a>
                         </li>

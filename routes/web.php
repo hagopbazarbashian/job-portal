@@ -8,6 +8,7 @@ use App\Http\Controllers\Front\PostController;
 use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\PrivacyController;
+use App\Http\Controllers\Front\PackageController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
@@ -35,6 +36,7 @@ Route::get('faq',[FaqController::class , 'index'])->name('faq');
 Route::get('privacy',[PrivacyController::class , 'index'])->name('privacy');
 Route::get('contact',[ContactController::class , 'index'])->name('contact');
 Route::post('submit_contact' , [ContactController::class , 'submit_contact'])->name('submit_contact');
+Route::get('package',[PackageController::class , 'index'])->name('Package');
 
 // PayPal Payment
 Route::post('paypal/payment' , [PayPallController::class , 'payment'])->name('payment');
