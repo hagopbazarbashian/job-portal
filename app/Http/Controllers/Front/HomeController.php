@@ -14,7 +14,7 @@ class HomeController extends Controller
 {
     public function index(){
         $page_home_data = page_home_item::where('id' , 1)->first();
-        $jobCategorys = JobCategory::orderBy('name' , 'asc')->take(9)->get();
+        $jobCategorys = JobCategory::orderBy('name' , 'asc')->take(9)->get(); 
         $whychooseitems = whychooseitem::orderBy('id' , 'asc')->get();
         $testmonials = testmonials::orderBy('id' , 'asc')->get();
         $posts = Post::orderBy('id' , 'asc')->get();

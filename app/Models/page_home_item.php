@@ -30,6 +30,8 @@ class page_home_item extends Model
         'testmonial_status',
         'post_heading',
         'post_sub_heading',
-        'post_status'
+        'post_status',
+        'title',
+        'meta_description'
     ];
 }

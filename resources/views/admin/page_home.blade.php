@@ -17,6 +17,7 @@
                            <button class="nav-link" id="v-pills-4-tab" data-bs-toggle="pill" data-bs-target="#v-pills-4" type="button" role="tab" aria-controls="v-pills-4" aria-selected="false">Featured Jobs</button><br>
                            <button class="nav-link" id="v-pills-5-tab" data-bs-toggle="pill" data-bs-target="#v-pills-5" type="button" role="tab" aria-controls="v-pills-5" aria-selected="false">Test Monian</button><br>
                            <button class="nav-link" id="v-pills-6-tab" data-bs-toggle="pill" data-bs-target="#v-pills-6" type="button" role="tab" aria-controls="v-pills-6" aria-selected="false">Blog</button><br>
+                           <button class="nav-link" id="v-pills-7-tab" data-bs-toggle="pill" data-bs-target="#v-pills-7" type="button" role="tab" aria-controls="v-pills-7" aria-selected="false">Seo Section</button><br>
                         </div>
                      </div>
 
@@ -74,7 +75,7 @@
                                     </div>
                                  </div>
                               </div>
-                              <!-- Search Section end -->
+                              <!-- Search Section end --> 
                            </div>
 
                            <div class="tab-pane fade" id="v-pills-2" role="tabpanel" aria-labelledby="v-pills-2-tab" tabindex="0">
@@ -208,6 +209,23 @@
                               </div>
                            </div>
                            {{-- Post End --}}
+                         </div>
+
+                         <div class="tab-pane fade" id="v-pills-7" role="tabpanel" aria-labelledby="v-pills-7-tab" tabindex="0">
+                            {{-- Seo Section --}}
+                            <div class="row">
+                              <div class="col-md-12">
+                                 <div class="mb-4">
+                                      <label class="form-label">Title *</label>
+                                      <input type="text" class="form-control" name="title" value="{{$pagehomeitem->title}}" />
+                                 </div>
+                                 <div class="mb-4">
+                                      <label class="form-label">Sub Heading *</label>
+                                     <textarea name="meta_description" class="form-control h_100" cols="30" rows="10">{!!$pagehomeitem->meta_description!!}</textarea>
+                                 </div>
+                              </div>
+                           </div>
+                           {{-- Seo Section End --}}
                          </div>
                         </div>
                         <div class="mb-4">

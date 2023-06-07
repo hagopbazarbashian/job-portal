@@ -114,7 +114,11 @@ class AdminHomePageController extends Controller
 
             'post_heading'=>$request->post_heading,
             'post_sub_heading'=>$request->post_sub_heading,
-            'post_status'=>$request->post_status
+            'post_status'=>$request->post_status,
+
+            'title'=>$request->title,
+            'meta_description'=>$request->meta_description
+
         ]);
 
         return redirect()->back()->with('succes' , 'Data is updated  Successfully');
