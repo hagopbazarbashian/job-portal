@@ -24,6 +24,7 @@ use App\Http\Controllers\Admin\AdminPrivacyPageController;
 use App\Http\Controllers\Admin\AdminContactController;
 use App\Http\Controllers\Admin\AdminJobCategoryItem;
 use App\Http\Controllers\Admin\AdminPackageController;
+use App\Http\Controllers\Admin\AdminOtherController;
 
 
 
@@ -79,6 +80,9 @@ Route::middleware(['admin:admin'])->group(function () {
 
     Route::get('/admin/job-category-page' , [AdminJobCategoryItem::class , 'index_job_category_home'])->name('admin_job_category_page');
     Route::post('/admin/job-category-page/{id}', [AdminJobCategoryItem::class, 'update_job_category_home'])->name('admin_job_category_page_update');
+
+    Route::get('/admin/admin-others-page' , [AdminOtherController::class , 'index'])->name('admin_others_page_page');
+    Route::post('/admin/admin-others-page/{id}', [AdminOtherController::class, 'update'])->name('admin_others_page_page_update');
 
 
 
