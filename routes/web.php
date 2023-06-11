@@ -9,6 +9,9 @@ use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\PrivacyController;
 use App\Http\Controllers\Front\PackageController;
+use App\Http\Controllers\Front\LoginController;
+use App\Http\Controllers\Front\SignupController;
+use App\Http\Controllers\Front\ForgetpasswordController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
@@ -38,6 +41,11 @@ Route::get('privacy',[PrivacyController::class , 'index'])->name('privacy');
 Route::get('contact',[ContactController::class , 'index'])->name('contact');
 Route::post('submit_contact' , [ContactController::class , 'submit_contact'])->name('submit_contact');
 Route::get('package',[PackageController::class , 'index'])->name('Package');
+Route::get('login',[LoginController::class , 'index'])->name('login');
+Route::get('signup',[SignupController::class , 'index'])->name('signup');
+Route::get('forgetpassword',[ForgetpasswordController::class , 'index'])->name('forgetpassword');
+
+Route::post('signup-company',[SignupController::class , 'company_submit'])->name('company_signup_submit');
 
 // PayPal Payment
 Route::post('paypal/payment' , [PayPallController::class , 'payment'])->name('payment');
