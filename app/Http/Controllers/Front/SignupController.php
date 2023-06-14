@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Mail\Websitemail;
 use App\Models\pageotheritem;
+use App\Models\company;
+use Hash;
+use Auth;
 
 class SignupController extends Controller
 {
@@ -15,6 +19,38 @@ class SignupController extends Controller
     }
 
     public function company_submit(Request $request){
+
+        $request->validate([
+            'company_name'=>'required',
+            'person_name'=>'required',
+            'username'=>'required',
+            'email'=>'required',
+            'password'=>'required',
+            'retype_password'=>'required'
+       ]);
+
+       $hashedPassword = Hash::make($request->input('password'));
+       $token = hash('sha256' , time());
+
+       $company = company::create([
+            'company_name'=>$request->input('company_name'),
+            'person_name'=>$request->input('person_name'),
+            'username'=>$request->input('username'),
+            'email'=>$request->input('email'),
+            'password'=>$hashedPassword,
+            'token'=>$token,
+            'status'=>0
+
+       ]);
+
+        $reset_link = url('company-signup-verifiy/'.$token.'/'.$request->email);
+        $subject = "Company Signup Verification";
+        $message = 'Please click on the following link : <br>';
+        $message =  '<a href="'.$reset_link.'">Click here</a>';
+
+        \Mail::to($request->email)->send(new Websitemail($subject , $message));
+
+       return redirect()->route('login')->with('succes' , 'An email send to your address. you must have to check that and click on the confermation link to validation your signup.');
 
     }
 }

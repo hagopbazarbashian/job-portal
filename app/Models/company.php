@@ -34,6 +34,7 @@ class company extends Model
         'facebook',
         'twitter',
         'linkedin',
-        'instagram'
+        'instagram',
+        'status'
     ];
 }
