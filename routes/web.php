@@ -47,7 +47,7 @@ Route::get('forgetpassword',[ForgetpasswordController::class , 'index'])->name('
 
 Route::post('signup-company',[SignupController::class , 'company_submit'])->name('company_signup_submit');
 
-Route::post('company-signup-verifiy',[SignupController::class , 'company_signup_verifiy'])->name('company-signup-verifiy');
+Route::get('company-signup-verifiy/{token}/{email}',[SignupController::class , 'company_signup_verifiy'])->name('company-signup-verifiy');
 
 // PayPal Payment
 Route::post('paypal/payment' , [PayPallController::class , 'payment'])->name('payment');

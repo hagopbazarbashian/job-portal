@@ -53,4 +53,21 @@ class SignupController extends Controller
        return redirect()->route('login')->with('succes' , 'An email send to your address. you must have to check that and click on the confermation link to validation your signup.');
 
     }
+
+
+     public function company_signup_verifiy($token , $email){
+
+        $company_data = company::where('token' , $token)->where('email' , $email)->first();
+
+        if(!$company_data){
+            return redirect()->route('login');
+        }
+
+        $company_data->update([
+           'token'=>'',
+           'status'=>0
+        ]);
+        return redirect()->route('login')->with('succes' , 'your email is verified successfully you can now login to the system as company.');
+
+     }
 }
