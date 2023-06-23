@@ -33,16 +33,16 @@ class SignupController extends Controller
        $token = hash('sha256' , time());
 
        $company = company::create([
-            'company_name'=>$request->input('company_name'), 
+            'company_name'=>$request->input('company_name'),
             'person_name'=>$request->input('person_name'),
             'username'=>$request->input('username'),
             'email'=>$request->input('email'),
             'password'=>$hashedPassword,
             'token'=>$token,
-            'status'=>0
+            'status'=>1
 
        ]);
-
+  
         $reset_link = url('company-signup-verifiy/'.$token.'/'.$request->email);
         $subject = "Company Signup Verification";
         $message = 'Please click on the following link : <br>';

@@ -31,7 +31,7 @@ class AdminLoginController extends Controller
 
         $credential = [
             'email' => $request->email,
-            'password' => $request->password
+            'password' => $request->password 
         ];
 
         if(Auth::guard('admin')->attempt($credential)) {
@@ -69,7 +69,7 @@ class AdminLoginController extends Controller
         $reset_link = url('/admin/reset-password/'.$token.'/'.$request->email);
         $subject = "Reset Password";
         $message = 'Please click on the following link : <br>';
-        $message =  '<a href="'.$reset_link.'">Click here</a>'; 
+        $message =  '<a href="'.$reset_link.'">Click here</a>';
 
         \Mail::to($request->email)->send(new Websitemail($subject , $message));
 

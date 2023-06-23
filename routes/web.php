@@ -12,6 +12,7 @@ use App\Http\Controllers\Front\PackageController;
 use App\Http\Controllers\Front\LoginController;
 use App\Http\Controllers\Front\SignupController;
 use App\Http\Controllers\Front\ForgetpasswordController;
+use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
@@ -43,9 +44,26 @@ Route::post('submit_contact' , [ContactController::class , 'submit_contact'])->n
 Route::get('package',[PackageController::class , 'index'])->name('Package');
 Route::get('login',[LoginController::class , 'index'])->name('login');
 Route::get('signup',[SignupController::class , 'index'])->name('signup');
-Route::get('forgetpassword',[ForgetpasswordController::class , 'index'])->name('forgetpassword');
+Route::get('forget-password-company',[ForgetpasswordController::class , 'forget_password_company'])->name('forget_password_company');
+Route::post('forget-password-company-submit',[ForgetpasswordController::class , 'forget_password_company_submit'])->name('forget_password_company_submit');
 
+Route::get('reset-password/company/{token}/{email}', [ForgetpasswordController::class, 'reset_password_company']);
+Route::post('reset-password-submit/{token}/{email}', [ForgetpasswordController::class, 'reset_password_company_submit'])->name('resetpassword_company_submit');
+
+
+// Company
+Route::post('signin-company',[LoginController::class , 'company_login_submit'])->name('company_signin_submit');
 Route::post('signup-company',[SignupController::class , 'company_submit'])->name('company_signup_submit');
+Route::get('logout-company',[LoginController::class , 'company_logout'])->name('company_logout');
+
+Route::middleware(['company:company'])->group(function () {
+    Route::get('/company/dashboard', [CompanyController::class, 'dashboard'])->name('company_dashboard');
+
+});
+
+Route::middleware(['Candidate', 'Candidate'])->group(function () {
+
+});
 
 Route::get('company-signup-verifiy/{token}/{email}',[SignupController::class , 'company_signup_verifiy'])->name('company-signup-verifiy');
 
