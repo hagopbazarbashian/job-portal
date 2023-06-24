@@ -56,6 +56,10 @@ Route::post('signin-company',[LoginController::class , 'company_login_submit'])-
 Route::post('signup-company',[SignupController::class , 'company_submit'])->name('company_signup_submit');
 Route::get('logout-company',[LoginController::class , 'company_logout'])->name('company_logout');
 
+// Candidate
+Route::post('signup-candidate',[SignupController::class , 'candidate_submit'])->name('Candidate_signup_submit');
+
+
 Route::middleware(['company:company'])->group(function () {
     Route::get('/company/dashboard', [CompanyController::class, 'dashboard'])->name('company_dashboard');
 

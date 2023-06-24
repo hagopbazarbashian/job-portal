@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Mail\Websitemail;
 use App\Models\pageotheritem;
 use App\Models\company;
+use App\Models\Candidate;
+use App\Http\Requests\CandidateSubmitrequest;
 use Hash;
 use Auth;
 
@@ -42,7 +44,7 @@ class SignupController extends Controller
             'status'=>1
 
        ]);
-  
+
         $reset_link = url('company-signup-verifiy/'.$token.'/'.$request->email);
         $subject = "Company Signup Verification";
         $message = 'Please click on the following link : <br>';
@@ -68,6 +70,12 @@ class SignupController extends Controller
            'status'=>0
         ]);
         return redirect()->route('login')->with('succes' , 'your email is verified successfully you can now login to the system as company.');
+
+     }
+
+
+     public function candidate_submit(CandidateSubmitrequest $request){
+        
 
      }
 }
