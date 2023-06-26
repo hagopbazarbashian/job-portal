@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\pageotheritem;
 use App\Models\company;
+use App\Models\Candidate;
+use App\Http\Requests\CandidateLoginRequest;
 use Hash;
 use Auth;
 
@@ -41,5 +43,23 @@ class LoginController extends Controller
     {
         Auth::guard('company')->logout();
         return redirect()->route('login');
+    }
+
+
+
+    public function candidate_login_submit(CandidateLoginRequest $request){
+
+
+        $credential = [
+            'username' => $request->username,
+            'password' => $request->password
+        ];
+
+        if(Auth::guard('Candidate')->attempt($credential)) {
+            return redirect()->route('candidate_dashboard');
+        } else {
+            return redirect()->route('login')->with('error', 'Information is not correct!');
+        }
+
     }
 }

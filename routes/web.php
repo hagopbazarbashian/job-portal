@@ -58,6 +58,9 @@ Route::get('logout-company',[LoginController::class , 'company_logout'])->name('
 
 // Candidate
 Route::post('signup-candidate',[SignupController::class , 'candidate_submit'])->name('Candidate_signup_submit');
+Route::get('candidate-signup-verifiy/{token}/{email}',[SignupController::class , 'candidate_signup_verifiy'])->name('candidate-signup-verifiy');
+Route::post('signin-candidate',[LoginController::class , 'candidate_login_submit'])->name('candidate_signin_submit');
+
 
 
 Route::middleware(['company:company'])->group(function () {
@@ -66,6 +69,7 @@ Route::middleware(['company:company'])->group(function () {
 });
 
 Route::middleware(['Candidate', 'Candidate'])->group(function () {
+    Route::get('/candidate/dashboard' , [CandidateController::class , 'dashboard'])->name('candidate_dashboard');
 
 });
 

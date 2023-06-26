@@ -24,6 +24,7 @@ class Candidate extends Model
         'gender',
         'medical_status',
         'date_of_birth',
-        'website'
+        'website',
+        'status'
     ];
 }

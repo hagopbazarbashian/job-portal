@@ -75,7 +75,44 @@ class SignupController extends Controller
 
 
      public function candidate_submit(CandidateSubmitrequest $request){
-        
+
+       $hashedPassword = Hash::make($request->input('password'));
+       $token = hash('sha256' , time());
+
+        Candidate::create([
+            'name'=>$request->name,
+            'username'=>$request->username,
+            'email'=>$request->email,
+            'password'=>$hashedPassword,
+            'token'=>$token,
+            'status'=>1
+        ]);
+
+        $reset_link = url('candidate-signup-verifiy/'.$token.'/'.$request->email);
+        $subject = "Candidate Signup Verification Please <br> click on the following link";
+        $message = 'Please click on the following link : <br>';
+        $message =  '<a href="'.$reset_link.'">Click here</a>';
+
+        \Mail::to($request->email)->send(new Websitemail($subject , $message));
+
+
+        return redirect()->route('login')->with('succes' , 'An email send to your address. you must have to check that and click on the confermation link to validation your signup.');
+
+     }
+
+     public function candidate_signup_verifiy($token , $email){
+
+        $Candidate_data = Candidate::where('token' , $token)->where('email' , $email)->first();
+
+        if(!$Candidate_data){
+            return redirect()->route('login');
+        }
+
+        $Candidate_data->update([
+           'token'=>'',
+           'status'=>0
+        ]);
+        return redirect()->route('login')->with('succes' , 'your email is verified successfully you can now login to the system as company.');
 
      }
 }
