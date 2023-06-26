@@ -12,6 +12,7 @@ use App\Http\Controllers\Front\PackageController;
 use App\Http\Controllers\Front\LoginController;
 use App\Http\Controllers\Front\SignupController;
 use App\Http\Controllers\Front\ForgetpasswordController;
+use App\Http\Controllers\Candidate\CandidateController;
 use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
@@ -60,6 +61,7 @@ Route::get('logout-company',[LoginController::class , 'company_logout'])->name('
 Route::post('signup-candidate',[SignupController::class , 'candidate_submit'])->name('Candidate_signup_submit');
 Route::get('candidate-signup-verifiy/{token}/{email}',[SignupController::class , 'candidate_signup_verifiy'])->name('candidate-signup-verifiy');
 Route::post('signin-candidate',[LoginController::class , 'candidate_login_submit'])->name('candidate_signin_submit');
+Route::get('logout-candidate',[LoginController::class , 'candidate_logout'])->name('candidate_logout');
 
 
 
@@ -68,7 +70,7 @@ Route::middleware(['company:company'])->group(function () {
 
 });
 
-Route::middleware(['Candidate', 'Candidate'])->group(function () {
+Route::middleware(['Candidate:Candidate'])->group(function () {
     Route::get('/candidate/dashboard' , [CandidateController::class , 'dashboard'])->name('candidate_dashboard');
 
 });
