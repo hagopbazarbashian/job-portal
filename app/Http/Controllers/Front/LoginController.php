@@ -14,6 +14,15 @@ use Auth;
 class LoginController extends Controller
 {
      public function index(){
+
+        if(Auth::guard('Candidate')->check()){
+            return redirect()->route('candidate_dashboard');
+        }
+
+        if(Auth::guard('company')->check()){
+            return redirect()->route('company_dashboard');
+        }
+        
         $pageotheritem = pageotheritem::where('id' , 1)->first();
         return view('front.login' , compact('pageotheritem'));
 

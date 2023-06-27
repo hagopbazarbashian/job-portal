@@ -62,7 +62,10 @@ Route::post('signup-candidate',[SignupController::class , 'candidate_submit'])->
 Route::get('candidate-signup-verifiy/{token}/{email}',[SignupController::class , 'candidate_signup_verifiy'])->name('candidate-signup-verifiy');
 Route::post('signin-candidate',[LoginController::class , 'candidate_login_submit'])->name('candidate_signin_submit');
 Route::get('logout-candidate',[LoginController::class , 'candidate_logout'])->name('candidate_logout');
-
+Route::get('forget-password-candidate',[ForgetpasswordController::class , 'forget_password_candidate'])->name('forget_password_candidate');
+Route::get('reset-password/candidate/{token}/{email}', [ForgetpasswordController::class, 'reset_password_candidate']);
+Route::post('reset-password-submit-candidate/{token}/{email}', [ForgetpasswordController::class, 'reset_password_candidate_submit'])->name('resetpassword_candidate_submit');
+Route::post('forget-password-candidate-submit',[ForgetpasswordController::class , 'forget_password_candidate_submit'])->name('forget_password_candidate_submit');
 
 
 Route::middleware(['company:company'])->group(function () {

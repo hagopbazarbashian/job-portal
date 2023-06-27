@@ -28,56 +28,72 @@
                     <div class="col-md-4">
                         <div class="box1">
                             <h4>12</h4>
-                            <p>Open Jobs</p>
+                            <p>Applied Jobs</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="box2">
                             <h4>3</h4>
-                            <p>Pending Jobs</p>
+                            <p>Bookmarked Jobs</p>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="box3">
                             <h4>5</h4>
-                            <p>Featured Jobs</p>
+                            <p>Rejected Jobs</p>
                         </div>
                     </div>
                 </div>
 
-                <h3 class="mt-5">Recent Jobs</h3>
+                <h3 class="mt-5">Recently Applied</h3>
+
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
                                 <th>SL</th>
                                 <th>Job Title</th>
-                                <th>Category</th>
+                                <th>Company</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                <th class="w-100">Detail</th>
                             </tr>
                             <tr>
                                 <td>1</td>
                                 <td>Senior Laravel Developer</td>
-                                <td>Web Development</td>
+                                <td>ABC Multimedia</td>
                                 <td>
-                                    <span class="badge bg-success">Active</span>
+                                    <div class="badge bg-primary">
+                                        Applied
+                                    </div>
                                 </td>
                                 <td>
-                                    <a href="" class="btn btn-warning btn-sm text-white"><i class="fas fa-edit"></i></a>
-                                    <a href="" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>
+                                    <a href="job.html" class="btn btn-primary btn-sm text-white"><i class="fas fa-eye"></i></a>
                                 </td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>UI/UX Designer</td>
-                                <td>Web Design</td>
+                                <td>Expert Laravel Developer</td>
+                                <td>Big Axis Limited</td>
                                 <td>
-                                    <span class="badge bg-danger">Pending</span>
+                                    <div class="badge bg-danger">
+                                        Rejected
+                                    </div>
                                 </td>
                                 <td>
-                                    <a href="" class="btn btn-warning btn-sm text-white"><i class="fas fa-edit"></i></a>
-                                    <a href="" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>
+                                    <a href="job.html" class="btn btn-primary btn-sm text-white"><i class="fas fa-eye"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>MySQL Database Expert</td>
+                                <td>Kite IT Solution</td>
+                                <td>
+                                    <div class="badge bg-success">
+                                        Approved
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="job.html" class="btn btn-primary btn-sm text-white"><i class="fas fa-eye"></i></a>
                                 </td>
                             </tr>
                         </tbody>

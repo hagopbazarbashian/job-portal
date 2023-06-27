@@ -45,7 +45,7 @@
                                     <button type="submit" class="btn btn-primary bg-website">
                                         Login
                                     </button>
-                                    <a href="" class="primary-color">Forget Password?</a>
+                                    <a href="{{route('forget_password_candidate')}}" class="primary-color">Forget Password?</a>
                                 </div>
                             </form>
 
