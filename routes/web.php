@@ -70,6 +70,7 @@ Route::post('forget-password-candidate-submit',[ForgetpasswordController::class 
 
 Route::middleware(['company:company'])->group(function () {
     Route::get('/company/dashboard', [CompanyController::class, 'dashboard'])->name('company_dashboard');
+    Route::get('/company/make-payment' , [CompanyController::class , 'make_payment'])->name('company_make_payment');
 
 });
 

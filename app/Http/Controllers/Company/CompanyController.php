@@ -17,4 +17,10 @@ class CompanyController extends Controller
        }
 
      }
+
+
+     public function make_payment(){
+        
+        return view('company.make_payment');
+     }
 }
