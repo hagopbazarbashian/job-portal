@@ -16,4 +16,13 @@ class order extends Model
         'expire_date',
         'currently_active'
     ];
+
+
+    public function rCompany(){
+        return $this->belongsTo(company::class , 'company_id');
+    }
+
+    public function rPricing(){
+        return $this->belongsTo(pricing::class , 'packeage_id');
+    }
 }

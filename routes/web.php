@@ -12,6 +12,7 @@ use App\Http\Controllers\Front\PackageController;
 use App\Http\Controllers\Front\LoginController;
 use App\Http\Controllers\Front\SignupController;
 use App\Http\Controllers\Front\ForgetpasswordController;
+use App\Http\Controllers\Paypal\PayPallController;
 use App\Http\Controllers\Candidate\CandidateController;
 use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Admin\AdminHomeController;
@@ -72,6 +73,12 @@ Route::middleware(['company:company'])->group(function () {
     Route::get('/company/dashboard', [CompanyController::class, 'dashboard'])->name('company_dashboard');
     Route::get('/company/make-payment' , [CompanyController::class , 'make_payment'])->name('company_make_payment');
 
+    // PayPal Payment
+    Route::post('/company/paypal/payment' , [CompanyController::class , 'paypal'])->name('company_payment');
+    Route::get('/company/paypal/success' , [CompanyController::class , 'paypal_success'])->name('company_paypal_success');
+    Route::get('/company/paypal/cancel' , [CompanyController::class , 'paypal_cancel'])->name('company_paypal_cancel');
+    // End Pypal
+
 });
 
 Route::middleware(['Candidate:Candidate'])->group(function () {
@@ -81,11 +88,7 @@ Route::middleware(['Candidate:Candidate'])->group(function () {
 
 Route::get('company-signup-verifiy/{token}/{email}',[SignupController::class , 'company_signup_verifiy'])->name('company-signup-verifiy');
 
-// PayPal Payment
-Route::post('paypal/payment' , [PayPallController::class , 'payment'])->name('payment');
-Route::get('paypal/success' , [PayPallController::class , 'success'])->name('paypal_success');
-Route::get('paypal/cancel' , [PayPallController::class , 'cancel'])->name('paypal_cancel');
-// End Pypal
+
 
 
 /* Admin */

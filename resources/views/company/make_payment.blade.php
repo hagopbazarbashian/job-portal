@@ -20,67 +20,53 @@
                 </div>
             </div>
             <div class="col-lg-9 col-md-12">
-                <h3>Hello, {{ Auth::guard('company')->user()->person_name }} {{ Auth::guard('company')->user()->company_name }}</h3>
-                <p>See all the statistics at a glance:</p>
+                <div class="col-lg-9 col-md-12">
+                    <h4>Current Plan</h4>
+                    <div class="row box-items mb-4">
+                        <div class="col-md-4">
+                            <div class="box1">
+                                @if ($currently_plan == null)
+                                <span class="text-danger">No plan is available</span>
+                                @else
+                                <h4>${{$currently_plan}}</h4>
+                                <p>Basic</p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="row box-items">
-                    <div class="col-md-4">
-                        <div class="box1">
-                            <h4>12</h4>
-                            <p>Open Jobs</p>
-                        </div>
+                    <h4>Choose plan and Make Payment</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <form action="{{route('company_payment')}}" method="post">
+                                @csrf
+                                <tr>
+                                    <td class="w-200">
+                                        <select name="package_id" class="form-control">
+                                            @foreach ($packages as $package)
+                                            <option value="{{$package->id}}">{{$package->package_name}} (${{$package->package_price}})</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <button type="submit" class="btn btn-primary">Pay with PayPal</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="w-200">
+                                        <select name="" class="form-control">
+                                            @foreach ($packages as $package)
+                                            <option value="{{$package->id}}">{{$package->package_name}} (${{$package->package_price}})</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <a href="" class="btn btn-primary">Pay with stripe</a>
+                                    </td>
+                                </tr>
+                            </form>
+                        </table>
                     </div>
-                    <div class="col-md-4">
-                        <div class="box2">
-                            <h4>3</h4>
-                            <p>Pending Jobs</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="box3">
-                            <h4>5</h4>
-                            <p>Featured Jobs</p>
-                        </div>
-                    </div>
-                </div>
-
-                <h3 class="mt-5">Recent Jobs</h3>
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <th>SL</th>
-                                <th>Job Title</th>
-                                <th>Category</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Senior Laravel Developer</td>
-                                <td>Web Development</td>
-                                <td>
-                                    <span class="badge bg-success">Active</span>
-                                </td>
-                                <td>
-                                    <a href="" class="btn btn-warning btn-sm text-white"><i class="fas fa-edit"></i></a>
-                                    <a href="" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>UI/UX Designer</td>
-                                <td>Web Design</td>
-                                <td>
-                                    <span class="badge bg-danger">Pending</span>
-                                </td>
-                                <td>
-                                    <a href="" class="btn btn-warning btn-sm text-white"><i class="fas fa-edit"></i></a>
-                                    <a href="" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>

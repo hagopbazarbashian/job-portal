@@ -15,7 +15,7 @@ class pricing extends Model
         'total_allowed_jobs',
         'total_allowed_featured_jobs',
         'total_allowed_photo',
-        'total_allowed_video'
+        'total_allowed_video'  
     ];
 
 }

@@ -1,43 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Company;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\company;
-use App\Models\order;
-use App\Models\pricing;
-use Auth;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
-class CompanyController extends Controller
+class PaypalController extends Controller
 {
-     public function dashboard(){
-       if(Auth::guard('company')->user()->status == 1){
-         return redirect()->back()->with('error' , 'your email address has not been verified');
-       }else{
-        return view('company.dashboard');
-       }
-
-     }
-
-
-     public function make_payment(){
-
-        $currently_plan = order::where('company_id' , Auth::guard('company')->user()->id)->where('currently_active' , 1)->first();
-
-        $packages = pricing::get();
-
-        return view('company.make_payment',compact('currently_plan','packages'));
-     }
-
-
-     public function paypal(Request $request)
+    public function payment(Request $request)
     {
-
-        $package_data = pricing::where('id' , $request->package_id)->first();
-        dd($package_data);
-
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
         $paypalToken = $provider->getAccessToken();
@@ -45,8 +16,8 @@ class CompanyController extends Controller
         $response = $provider->createOrder([
             "intent" => "CAPTURE",
             "application_context" => [
-                "return_url" => route('company_paypal_success'),
-                "cancel_url" => route('company_paypal_cancel')
+                "return_url" => route('paypal_success'),
+                "cancel_url" => route('paypal_cancel')
             ],
             "purchase_units" => [
                 [
