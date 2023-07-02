@@ -28,8 +28,8 @@
                                 @if ($currently_plan == null)
                                 <span class="text-danger">No plan is available</span>
                                 @else
-                                <h4>${{$currently_plan}}</h4>
-                                <p>Basic</p>
+                                <h4>${{$currently_plan->paid_amount}}</h4>
+                                <p>{{ $currently_plan->rPricing->package_name}}</p>
                                 @endif
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                                         <button type="submit" class="btn btn-primary">Pay with PayPal</button>
                                     </td>
                                 </tr>
-                                <tr>
+                                {{-- <tr>
                                     <td class="w-200">
                                         <select name="" class="form-control">
                                             @foreach ($packages as $package)
@@ -63,7 +63,7 @@
                                     <td>
                                         <a href="" class="btn btn-primary">Pay with stripe</a>
                                     </td>
-                                </tr>
+                                </tr> --}}
                             </form>
                         </table>
                     </div>

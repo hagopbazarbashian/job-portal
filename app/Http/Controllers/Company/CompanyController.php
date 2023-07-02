@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Company;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Srmklive\PayPal\Services\PayPal as PayPalClient;
 use App\Models\company;
 use App\Models\order;
 use App\Models\pricing;
-use Auth;
-use Srmklive\PayPal\Services\PayPal as PayPalClient;
+use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
@@ -22,9 +22,16 @@ class CompanyController extends Controller
      }
 
 
+
+     public function orders(){
+        $orders = order::with('rPricing')->get();
+        return view('company.orders',compact('orders'));
+     }
+
+
      public function make_payment(){
 
-        $currently_plan = order::where('company_id' , Auth::guard('company')->user()->id)->where('currently_active' , 1)->first();
+        $currently_plan = order::with('rPricing')->where('company_id' , Auth::guard('company')->user()->id)->where('currently_active' , 1)->first();
 
         $packages = pricing::get();
 
@@ -36,7 +43,6 @@ class CompanyController extends Controller
     {
 
         $package_data = pricing::where('id' , $request->package_id)->first();
-        dd($package_data);
 
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
@@ -52,7 +58,7 @@ class CompanyController extends Controller
                 [
                     "amount" => [
                         "currency_code" => "USD",
-                        "value" => $request->price
+                        "value" => $package_data->package_price
                     ]
                 ]
             ]
@@ -63,6 +69,9 @@ class CompanyController extends Controller
         if(isset($response['id']) && $response['id']!=null) {
             foreach($response['links'] as $link) {
                 if($link['rel'] === 'approve') {
+                    session()->put('package_id' , $package_data->id);
+                    session()->put('package_price' , $package_data->package_price);
+                    session()->put('package_days' , $package_data->package_days);
                     return redirect()->away($link['href']);
                 }
             }
@@ -81,14 +90,30 @@ class CompanyController extends Controller
         //dd($response);
 
         if(isset($response['status']) && $response['status'] == 'COMPLETED') {
-            return "Payment is successful!";
+            // Save Data To Order DB
+            $data['currently_active'] = 0;
+            order::where('company_id',Auth::guard()->user()->id)->update($data);
+            $days = session()->get('package_days');
+            order::create([
+                'company_id'=>Auth::guard()->user()->id,
+                'packeage_id'=> session()->get('package_id'),
+                'order_no'=>time(),
+                'paid_amount'=>session()->get('package_price'),
+                'payment_method'=>'PayPal',
+                'start_date'=>date('Y-m-d'),
+                'expire_date'=>date('Y-m-d' , strtotime("+$days days")),
+                'currently_active'=>1
+
+            ]);
+
+            return redirect()->route('company_make_payment')->with('succes','Payment is successful!');
         } else {
-            return redirect()->route('paypal_cancel');
+            return redirect()->route('company_paypal_cancel');
         }
     }
 
     public function paypal_cancel()
     {
-        return "Payment is cancelled!";
+        return redirect()->route('company_make_payment')->with('error','Payment is cancelled!');
     }
 }

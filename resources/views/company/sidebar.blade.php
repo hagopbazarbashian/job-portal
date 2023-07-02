@@ -5,8 +5,8 @@
         <li class="list-group-item {{ request()->routeIs('company_make_payment') ? 'active' : '' }}">
             <a href="{{route('company_make_payment')}}">Make Payment</a>
         </li>
-        <li class="list-group-item">
-            <a href="company-orders.html">Orders</a>
+        <li class="list-group-item {{ request()->routeIs('company_orders') ? 'active' : '' }}">
+            <a href="{{route('company_orders')}}">Orders</a>
         </li>
         <li class="list-group-item">
             <a href="company-job-add.html">Create Job</a>
