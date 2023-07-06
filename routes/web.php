@@ -31,6 +31,7 @@ use App\Http\Controllers\Admin\AdminContactController;
 use App\Http\Controllers\Admin\AdminJobCategoryItem;
 use App\Http\Controllers\Admin\AdminPackageController;
 use App\Http\Controllers\Admin\AdminOtherController;
+use App\Http\Controllers\Admin\AdminJobLoctionController;
 
 
 
@@ -175,6 +176,9 @@ Route::middleware(['admin:admin'])->group(function () {
     Route::get('/admin/package/edit/{id}' , [AdminPackageController::class , 'edit'])->name('admin_package_edit');
     Route::post('/admin/package/update/{id}' , [AdminPackageController::class , 'update'])->name('admin_package_update');
     Route::get('/admin/package/delete/{id}' , [AdminPackageController::class , 'delete'])->name('admin_package_delete');
+
+    // Job Location
+    Route::resource('job-location', AdminJobLoctionController::class);
 
 
 });

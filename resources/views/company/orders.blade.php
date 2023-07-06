@@ -45,7 +45,11 @@
                                 <td>{{$order->expire_date}}</td>
                                 <td>{{$order->payment_method}}</td>
                                 <td>
+                                    @if ($order->currently_active == 1)
                                     <span class="badge bg-success">Active</span>
+                                    @else
+                                    <span class="badge bg-danger">Pending</span>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

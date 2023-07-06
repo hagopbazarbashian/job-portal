@@ -24,7 +24,7 @@ class CompanyController extends Controller
 
 
      public function orders(){
-        $orders = order::with('rPricing')->get();
+        $orders = order::with('rPricing')->orderBy('id' , 'desc')->where('company_id' , Auth::guard('company')->user()->id)->get();
         return view('company.orders',compact('orders'));
      }
 
