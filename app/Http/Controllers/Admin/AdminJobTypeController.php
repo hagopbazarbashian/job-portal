@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\joblocation;
+use App\Models\jobtype;
 
-
-class AdminJobLoctionController extends Controller
+class AdminJobTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class AdminJobLoctionController extends Controller
      */
     public function index()
     {
-        $joblocations = joblocation::get();
-        return view('admin.job_location' , compact('joblocations'));
+        $jobtypes = jobtype::get();
+        return view('admin.job-type',compact('jobtypes'));
     }
 
     /**
@@ -27,8 +26,8 @@ class AdminJobLoctionController extends Controller
      */
     public function create()
     {
-        return view('admin.job_location_create');
-    }
+        return view('admin.job_type_create');
+    } 
 
     /**
      * Store a newly created resource in storage.
@@ -38,14 +37,7 @@ class AdminJobLoctionController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name'=>'required'
-        ]);
-
-        joblocation::create([
-            'name'=>$request->name
-        ]);
-        return redirect()->route('job-location.index')->with('success' , 'Data Save Successfully');
+        //
     }
 
     /**
@@ -56,7 +48,7 @@ class AdminJobLoctionController extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**
@@ -67,10 +59,7 @@ class AdminJobLoctionController extends Controller
      */
     public function edit($id)
     {
-        $joblocation = joblocation::where('id' , $id)->first();
-
-        return view('admin.job_location_edit',compact('joblocation'));
-
+        //
     }
 
     /**
@@ -82,17 +71,7 @@ class AdminJobLoctionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name'=>'required'
-        ]);
-
-        $joblocation = joblocation::where('id' , $id)->first();
-
-        $joblocation->update([
-            'name'=>$request->name
-        ]);
-
-        return redirect()->route('job-location.index')->with('succes' , 'Update Successfully');
+        //
     }
 
     /**
@@ -103,9 +82,6 @@ class AdminJobLoctionController extends Controller
      */
     public function destroy($id)
     {
-        $joblocation = joblocation::where('id' , $id)->delete();
-
-        return redirect()->back()->with('succes' , 'Data is deleted Successfully');
-
+        //
     }
 }

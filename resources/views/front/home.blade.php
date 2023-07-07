@@ -26,30 +26,10 @@
                            <div class="col-lg-3">
                               <div class="form-group">
                                  <select name="" class="form-select select2">
-                                    <option value="">
-                                       {{$page_home_data->job_location}}
-                                    </option>
-                                    <option value="">
-                                       Australia
-                                    </option>
-                                    <option value="">
-                                       Bangladesh
-                                    </option>
-                                    <option value="">
-                                       Canada
-                                    </option>
-                                    <option value="">
-                                       China
-                                    </option>
-                                    <option value="">
-                                       India
-                                    </option>
-                                    <option value="">
-                                       United Kingdom
-                                    </option>
-                                    <option value="">
-                                       United States
-                                    </option>
+                                    <option value="">{{$page_home_data->job_location}}</option>
+                                    @foreach ($joblocations as $joblocation)
+                                    <option value="{{$joblocation->id}}">{{$joblocation->name}}</option>
+                                    @endforeach
                                  </select>
                               </div>
                            </div>
