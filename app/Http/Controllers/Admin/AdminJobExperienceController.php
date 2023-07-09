@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\jobtype;
+use App\Models\jobexperience;
 
-class AdminJobTypeController extends Controller
+class AdminJobExperienceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,9 @@ class AdminJobTypeController extends Controller
      */
     public function index()
     {
-        $jobtypes = jobtype::get();
-        return view('admin.job-type',compact('jobtypes'));
+        $jobexperiences = jobexperience::get();
+        return view('admin.job_experience',compact('jobexperiences'));
+
     }
 
     /**
@@ -26,7 +27,7 @@ class AdminJobTypeController extends Controller
      */
     public function create()
     {
-        return view('admin.job_type_create');
+        return view('admin.job_experience_create');
     }
 
     /**
@@ -41,11 +42,13 @@ class AdminJobTypeController extends Controller
             'name'=>'required'
         ]);
 
-        jobtype::create([
+        jobexperience::create([
             'name'=>$request->name
         ]);
 
-        return redirect()->route('job-type.index')->with('success' , 'Data Save Successfully');
+        return redirect()->route('job-experience.index')->with('success' , 'Data Save Successfully');
+
+
     }
 
     /**
@@ -67,8 +70,9 @@ class AdminJobTypeController extends Controller
      */
     public function edit($id)
     {
-        $jobtype = jobtype::where('id' , $id)->first();
-        return view('admin.job_type_edit',compact('jobtype'));
+        $jobexperience = jobexperience::where('id' , $id)->first();
+
+        return view('admin.job_experience_edit',compact('jobexperience'));
     }
 
     /**
@@ -80,16 +84,16 @@ class AdminJobTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
+         $request->validate([
             'name'=>'required'
-        ]);
-        $jobtype = jobtype::where('id' , $id)->first();
-        $jobtype->update([
+         ]);
+         $jobexperience = jobexperience::where('id' , $id)->first();
+
+         $jobexperience->update([
             'name'=>$request->name
-        ]);
+         ]);
 
-        return redirect()->route('job-type.index')->with('succes' , 'Update Successfully');
-
+         return redirect()->route('job-experience.index')->with('succes' , 'Update Successfully');
     }
 
     /**
@@ -100,9 +104,10 @@ class AdminJobTypeController extends Controller
      */
     public function destroy($id)
     {
-        $jobtype = jobtype::where('id' , $id)->first();
-        $jobtype->delete();
-        return redirect()->route('job-type.index')->with('succes' , 'Data is deleted Successfully');
+        $jobexperience = jobexperience::where('id' , $id)->first();
+        $jobexperience->delete();
+
+        return redirect()->back()->with('succes' , 'Data is deleted Successfully');
 
 
     }

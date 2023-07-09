@@ -32,6 +32,7 @@
                     <li class="{{ request()->routeIs('admin_job_category') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin_job_category')}}"><i class="fas fa-angle-right"></i> Job Category</a></li>
                     <li class="{{ request()->routeIs('job-location.index') ? 'active' : '' }}"><a class="nav-link" href="{{route('job-location.index')}}"><i class="fas fa-angle-right"></i>Job Location</a></li>
                     <li class="{{ request()->routeIs('job-type.index') ? 'active' : '' }}"><a class="nav-link" href="{{route('job-type.index')}}"><i class="fas fa-angle-right"></i>Job Type</a></li>
+                    <li class="{{ request()->routeIs('job-experience.index') ? 'active' : '' }}"><a class="nav-link" href="{{route('job-experience.index')}}"><i class="fas fa-angle-right"></i>Job Experience</a></li>
                 </ul>
             </li>
 

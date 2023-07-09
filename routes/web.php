@@ -33,6 +33,7 @@ use App\Http\Controllers\Admin\AdminPackageController;
 use App\Http\Controllers\Admin\AdminOtherController;
 use App\Http\Controllers\Admin\AdminJobLoctionController;
 use App\Http\Controllers\Admin\AdminJobTypeController;
+use App\Http\Controllers\Admin\AdminJobExperienceController;
 
 
 
@@ -182,6 +183,9 @@ Route::middleware(['admin:admin'])->group(function () {
     Route::resource('job-location', AdminJobLoctionController::class);
     // Job Type
     Route::resource('job-type' , AdminJobTypeController::class);
+    // job experience
+    Route::resource('job-experience' , AdminJobExperienceController::class);
 
 
 });
+ 

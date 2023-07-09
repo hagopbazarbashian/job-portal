@@ -1,10 +1,10 @@
 @extends('admin.layout.app')
 
-@section('heading', 'Job Type')
+@section('heading', 'Job Experience')
 
 @section('button')
 <div>
-    <a href="{{route('job-type.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i>Add New</a>
+    <a href="{{route('job-experience.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i>Add New</a>
 </div>
 @endsection
 @section('main_content')
@@ -23,13 +23,13 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach ($jobtypes as $key=>$jobtype)
+                                @foreach ($jobexperiences as $key=>$jobexperience)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
-                                        <td>{{ $jobtype->name }}</td>
+                                        <td>{{ $jobexperience->name }}</td>
                                         <td class="pt_10 pb_10">
-                                            <a href="{{route('job-type.edit',$jobtype->id)}}" class="btn btn-primary btn-sm">Edit</a>
-                                            <form method="POST" action="{{ route('job-type.destroy', $jobtype->id) }}">
+                                            <a href="{{route('job-experience.edit',$jobexperience->id)}}" class="btn btn-primary btn-sm">Edit</a>
+                                            <form method="POST" action="{{ route('job-experience.destroy', $jobexperience->id) }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button  class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');">Delete</button>
