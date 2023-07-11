@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\jobexperience;
+use App\Models\jobsalary;
 
-class AdminJobExperienceController extends Controller
+class AdminJobSalaryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class AdminJobExperienceController extends Controller
      */
     public function index()
     {
-        $jobexperiences = jobexperience::get();
-        return view('admin.job_experience',compact('jobexperiences'));
+        $jobsalarys = jobsalary::get();
+        return view('admin.job_salary',compact('jobsalarys'));
 
     }
 
@@ -27,7 +27,7 @@ class AdminJobExperienceController extends Controller
      */
     public function create()
     {
-        return view('admin.job_experience_create');
+        return view('admin.job_salary_create');
     }
 
     /**
@@ -42,13 +42,11 @@ class AdminJobExperienceController extends Controller
             'name'=>'required'
         ]);
 
-        jobexperience::create([
+        jobsalary::create([
             'name'=>$request->name
         ]);
 
-        return redirect()->route('job-experience.index')->with('succes' , 'Data Save Successfully');
-
-
+        return redirect()->route('job-salary.index')->with('success' , 'Data Save Successfully');
     }
 
     /**
@@ -70,9 +68,7 @@ class AdminJobExperienceController extends Controller
      */
     public function edit($id)
     {
-        $jobexperience = jobexperience::where('id' , $id)->first();
-
-        return view('admin.job_experience_edit',compact('jobexperience'));
+        //
     }
 
     /**
@@ -84,16 +80,7 @@ class AdminJobExperienceController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $request->validate([
-            'name'=>'required'
-         ]);
-         $jobexperience = jobexperience::where('id' , $id)->first();
-
-         $jobexperience->update([
-            'name'=>$request->name
-         ]);
-
-         return redirect()->route('job-experience.index')->with('succes' , 'Update Successfully');
+        //
     }
 
     /**
@@ -104,11 +91,6 @@ class AdminJobExperienceController extends Controller
      */
     public function destroy($id)
     {
-        $jobexperience = jobexperience::where('id' , $id)->first();
-        $jobexperience->delete();
-
-        return redirect()->back()->with('succes' , 'Data is deleted Successfully');
-
-
+        //
     }
 }

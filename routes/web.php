@@ -34,6 +34,8 @@ use App\Http\Controllers\Admin\AdminOtherController;
 use App\Http\Controllers\Admin\AdminJobLoctionController;
 use App\Http\Controllers\Admin\AdminJobTypeController;
 use App\Http\Controllers\Admin\AdminJobExperienceController;
+use App\Http\Controllers\Admin\AdminJobGenderController;
+use App\Http\Controllers\Admin\AdminJobSalaryController;
 
 
 
@@ -185,7 +187,10 @@ Route::middleware(['admin:admin'])->group(function () {
     Route::resource('job-type' , AdminJobTypeController::class);
     // job experience
     Route::resource('job-experience' , AdminJobExperienceController::class);
+    // job Gender
+    Route::resource('job-gender' , AdminJobGenderController::class);
+    // job Salary
+    Route::resource('job-salary' , AdminJobSalaryController::class);
 
 
 });
- 

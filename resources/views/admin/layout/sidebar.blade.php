@@ -33,6 +33,8 @@
                     <li class="{{ request()->routeIs('job-location.index') ? 'active' : '' }}"><a class="nav-link" href="{{route('job-location.index')}}"><i class="fas fa-angle-right"></i>Job Location</a></li>
                     <li class="{{ request()->routeIs('job-type.index') ? 'active' : '' }}"><a class="nav-link" href="{{route('job-type.index')}}"><i class="fas fa-angle-right"></i>Job Type</a></li>
                     <li class="{{ request()->routeIs('job-experience.index') ? 'active' : '' }}"><a class="nav-link" href="{{route('job-experience.index')}}"><i class="fas fa-angle-right"></i>Job Experience</a></li>
+                    <li class="{{ request()->routeIs('job-gender.index') ? 'active' : '' }}"><a class="nav-link" href="{{route('job-gender.index')}}"><i class="fas fa-angle-right"></i>Job Gender</a></li>
+                    <li class="{{ request()->routeIs('job-salary.index') ? 'active' : '' }}"><a class="nav-link" href="{{route('job-salary.index')}}"><i class="fas fa-angle-right"></i>Job Salary</a></li>
                 </ul>
             </li>
 
