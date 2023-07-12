@@ -68,7 +68,8 @@ class AdminJobSalaryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $jobsalary = jobsalary::where('id' , $id)->first();
+        return view('admin.job_salary_edit',compact('jobsalary'));
     }
 
     /**
@@ -80,7 +81,18 @@ class AdminJobSalaryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'=>'required'
+        ]);
+
+        $jobsalary = jobsalary::where('id' , $id)->first();
+
+        $jobsalary ->update([
+            'name'=>$request->name
+        ]);
+
+        return redirect()->route('job-salary.index')->with('succes' , 'Update Successfully');
+
     }
 
     /**
@@ -91,6 +103,9 @@ class AdminJobSalaryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $jobsalary = jobsalary::where('id' , $id)->first();
+
+        $jobsalary->delete();
+        return redirect()->back()->with('succes' , 'Data is deleted Successfully');
     }
 }

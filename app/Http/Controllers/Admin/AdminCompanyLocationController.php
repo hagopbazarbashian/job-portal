@@ -4,19 +4,20 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\jobgender;
+use App\Models\companylocation;
 
-class AdminJobGenderController extends Controller
+class AdminCompanyLocationController extends Controller
 {
-    /** 
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $jobgenders = jobgender::get();
-        return view('admin.job_gender',compact('jobgenders'));
+        $companylocations = companylocation::get();
+
+        return view('admin.company_location',compact('companylocations'));
     }
 
     /**
@@ -26,7 +27,7 @@ class AdminJobGenderController extends Controller
      */
     public function create()
     {
-        return view('admin.job_gender_create');
+        //
     }
 
     /**
@@ -37,17 +38,7 @@ class AdminJobGenderController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name'=>'required'
-        ]);
-
-        jobgender::create([
-            'name'=>$request->name
-        ]);
-
-        return redirect()->route('job-gender.index')->with('succes' , 'Data Save Successfully');
-
-
+        //
     }
 
     /**
@@ -69,8 +60,7 @@ class AdminJobGenderController extends Controller
      */
     public function edit($id)
     {
-       $jobgender = jobgender::where('id' , $id)->first();
-       return view('admin.job_gender_edit',compact('jobgender'));
+        //
     }
 
     /**
@@ -82,18 +72,7 @@ class AdminJobGenderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name'=>'required'
-        ]);
-
-        $jobgender = jobgender::where('id' , $id)->first();
-
-        $jobgender->update([
-            'name'=>$request->name
-        ]);
-
-        return redirect()->route('job-gender.index')->with('succes' , 'Update Successfully');
-
+        //
     }
 
     /**
@@ -104,8 +83,6 @@ class AdminJobGenderController extends Controller
      */
     public function destroy($id)
     {
-        $jobgender = jobgender::where('id' , $id)->first();
-        $jobgender ->delete();
-        return redirect()->back()->with('succes' , 'Data is deleted Successfully');
+        //
     }
 }

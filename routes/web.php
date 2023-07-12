@@ -36,6 +36,7 @@ use App\Http\Controllers\Admin\AdminJobTypeController;
 use App\Http\Controllers\Admin\AdminJobExperienceController;
 use App\Http\Controllers\Admin\AdminJobGenderController;
 use App\Http\Controllers\Admin\AdminJobSalaryController;
+use App\Http\Controllers\Admin\AdminCompanyLocationController;
 
 
 
@@ -134,10 +135,6 @@ Route::middleware(['admin:admin'])->group(function () {
     Route::get('/admin/admin-others-page' , [AdminOtherController::class , 'index'])->name('admin_others_page_page');
     Route::post('/admin/admin-others-page/{id}', [AdminOtherController::class, 'update'])->name('admin_others_page_page_update');
 
-
-
-
-
     Route::get('/admin/job-category/view' , [AdminJobCategoryController::class , 'index'])->name('admin_job_category');
     Route::get('/admin/job-category/add' , [AdminJobCategoryController::class , 'create'])->name('admin_job_category_create');
     Route::post('/admin/job-category/store' , [AdminJobCategoryController::class , 'store'])->name('admin_job_category_store');
@@ -191,6 +188,8 @@ Route::middleware(['admin:admin'])->group(function () {
     Route::resource('job-gender' , AdminJobGenderController::class);
     // job Salary
     Route::resource('job-salary' , AdminJobSalaryController::class);
+    // Company Location
+    Route::resource('campany-location' , AdminCompanyLocationController::class);
 
 
 });
